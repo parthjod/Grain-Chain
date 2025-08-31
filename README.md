@@ -13,7 +13,7 @@ Track your food from farm to table with the power of Blockchain.
 
 GrainChain is a revolutionary platform that leverages blockchain technology to provide end-to-end traceability and transparency for agricultural products. Our mission is to build trust between consumers, retailers, distributors, and farmers by creating an immutable record of a product's journey.
 
-📜 Table of Contents
+📜Table of Contents
 
 - ✨ Features
 - 🚀 Quick Start
