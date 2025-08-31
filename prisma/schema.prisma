@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Produce {
+  id              String   @id @default(cuid())
+  produceId      String   @unique
+  farmer         String
+  farmerName     String
+  produceType    String
+  quantity       Float
+  unit           String
+  origin         String
+  harvestDate    DateTime
+  blockchainHash String
+  status         String   @default("Registered")
+  currentHolder  String
+  price          Float?
+  isSold         Boolean  @default(false)
+  qrCode         String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  
+  history        ProduceHistory[]
+  
+  @@map("produces")
+}
+
+model ProduceHistory {
+  id          String   @id @default(cuid())
+  produceId   String
+  actor       String
+  actorName   String
+  action      String
+  details     String?
+  timestamp   DateTime
+  location    String?
+  
+  produce     Produce  @relation(fields: [produceId], references: [produceId], onDelete: Cascade)
+  
+  @@map("produce_history")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  walletAddress String @unique
+  name      String
+  role      String   // "farmer", "distributor", "retailer", "consumer"
+  email     String?
+  phone     String?
+  address   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("users")
+}
