@@ -196,10 +196,10 @@ export default function ConsumerPage() {
               <div className="space-y-4">
                 <div className="bg-gray-100 p-4 rounded-lg">
                   <QrScanner
-                    onResult={(result) => handleScan(result?.text)}
+                    onScan={(result) => handleScan(result?.text)}
                     onError={handleError}
                     style={{ width: '100%' }}
-                    constraints={{ facingMode: 'environment' }}
+                    constraints={{ video: { facingMode: 'environment' } }}
                   />
                 </div>
                 

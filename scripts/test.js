@@ -1,4 +1,5 @@
-import { ethers } from "hardhat";
+import pkg from "hardhat";
+const { ethers } = pkg;
 
 async function main() {
   console.log("🧪 Testing ProduceChain contract...");
@@ -18,7 +19,8 @@ async function main() {
   console.log("✅ Connected to contract at:", contractAddress);
 
   // Test data
-  const testProduceId = "TEST-001";
+  const testProduceIdString = "TEST-001";
+  const testProduceId = ethers.encodeBytes32String(testProduceIdString);
   const [farmer, distributor, retailer] = await ethers.getSigners();
   const testTimestamp = Math.floor(Date.now() / 1000);
   const testHash = ethers.keccak256(ethers.toUtf8Bytes("test produce data"));

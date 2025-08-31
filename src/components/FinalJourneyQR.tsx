@@ -13,7 +13,6 @@ interface FinalJourneyQRProps {
     origin: string;
     harvestDate: string;
     status: string;
-    price?: number;
     currentHolder: string;
     isSold: boolean;
     history: Array<{
@@ -49,7 +48,6 @@ export default function FinalJourneyQR({ produceId, produceData }: FinalJourneyQ
           origin: produceData.origin,
           harvestDate: produceData.harvestDate,
           status: produceData.status,
-          price: produceData.price,
           isSold: produceData.isSold,
           currentHolder: produceData.currentHolder,
           journey: produceData.history.map(entry => ({
@@ -131,12 +129,6 @@ export default function FinalJourneyQR({ produceId, produceData }: FinalJourneyQ
             <span className="text-purple-700">Status:</span>
             <span className="text-gray-700">{produceData.status}</span>
           </div>
-          {produceData.price && (
-            <div className="flex justify-between">
-              <span className="text-purple-700">Price:</span>
-              <span className="text-green-700 font-semibold">${produceData.price}</span>
-            </div>
-          )}
           <div className="flex justify-between">
             <span className="text-purple-700">Journey Steps:</span>
             <span className="text-gray-700">{produceData.history.length} stages</span>
