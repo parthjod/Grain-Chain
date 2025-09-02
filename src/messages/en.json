@@ -1,0 +1,114 @@
+{
+  "Index": {
+    "title": "GrainChain",
+    "subtitle": "Blockchain-powered supply chain transparency for agricultural products",
+    "description": "Track your food from farm to table with complete transparency and security",
+    "farmerCard": {
+      "title": "🌾 Farmer",
+      "description": "Register your produce on the blockchain",
+      "content": "Register new produce, generate QR codes, and start the traceability journey",
+      "button": "Enter Farmer Portal"
+    },
+    "distributorCard": {
+      "title": "🚚 Distributor",
+      "description": "Update logistics and track shipments",
+      "content": "Update shipment status, track logistics, and maintain chain of custody",
+      "button": "Enter Distributor Portal"
+    },
+    "retailerCard": {
+      "title": "🏪 Retailer",
+      "description": "Confirm arrival and set pricing",
+      "content": "Confirm product arrival, assess quality, and set retail prices",
+      "button": "Enter Retailer Portal"
+    },
+    "consumerCard": {
+      "title": "👥 Consumer",
+      "description": "Trace product journey and verify authenticity",
+      "content": "Scan QR codes to trace the complete journey of your food products",
+      "button": "Enter Consumer Portal"
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "description": "The complete GrainChain supply chain process",
+      "steps": {
+        "1": {
+          "title": "Farmer Registration",
+          "description": "Farmers register their produce with detailed information and generate unique QR codes"
+        },
+        "2": {
+          "title": "Distribution Tracking",
+          "description": "Distributors update logistics and track products through the supply chain"
+        },
+        "3": {
+          "title": "Retail Confirmation",
+          "description": "Retailers confirm arrival, assess quality, and set final pricing"
+        },
+        "4": {
+          "title": "Consumer Verification",
+          "description": "Consumers scan QR codes to verify authenticity and trace the complete journey"
+        }
+      }
+    },
+    "keyFeatures": {
+      "title": "Key Features",
+      "description": "Why choose GrainChain for supply chain transparency",
+      "features": {
+        "1": {
+          "title": "Blockchain Security",
+          "description": "All data is securely stored on the blockchain, ensuring immutability and trust"
+        },
+        "2": {
+          "title": "Complete Transparency",
+          "description": "Full visibility into every step of the supply chain from farm to table"
+        },
+        "3": {
+          "title": "Easy QR Scanning",
+          "description": "Simple QR code scanning for instant access to product information"
+        },
+        "4": {
+          "title": "Real-time Updates",
+          "description": "Live tracking and status updates throughout the supply chain journey"
+        }
+      }
+    },
+    "benefits": {
+      "title": "Benefits for Everyone",
+      "farmers": {
+        "title": "For Farmers",
+        "points": [
+          "Provenance tracking",
+          "Fair pricing",
+          "Market access",
+          "Quality recognition"
+        ]
+      },
+      "distributors": {
+        "title": "For Distributors",
+        "points": [
+          "Logistics optimization",
+          "Real-time tracking",
+          "Reduced fraud",
+          "Efficient operations"
+        ]
+      },
+      "retailers": {
+        "title": "For Retailers",
+        "points": [
+          "Product verification",
+          "Quality assurance",
+          "Customer trust",
+          "Brand protection"
+        ]
+      },
+      "consumers": {
+        "title": "For Consumers",
+        "points": [
+          "Food safety",
+          "Transparency",
+          "Ethical sourcing",
+          "Informed choices"
+        ]
+      }
+    }
+  }
+}

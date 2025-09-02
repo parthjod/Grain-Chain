@@ -5,43 +5,60 @@
 [32m[nodemon] starting `npx tsx server.ts`[39m
 > Ready on http://0.0.0.0:3000
 > Socket.IO server running at ws://0.0.0.0:3000/api/socketio
- ○ Compiling /retailer ...
- ✓ Compiled /retailer in 11.5s (936 modules)
- GET /retailer 200 in 14326ms
- ○ Compiling /api/produce/retail ...
- ✓ Compiled /api/produce/retail in 2.3s (943 modules)
-prisma:query SELECT `main`.`produces`.`id`, `main`.`produces`.`produceId`, `main`.`produces`.`farmer`, `main`.`produces`.`farmerName`, `main`.`produces`.`produceType`, `main`.`produces`.`quantity`, `main`.`produces`.`unit`, `main`.`produces`.`origin`, `main`.`produces`.`harvestDate`, `main`.`produces`.`blockchainHash`, `main`.`produces`.`status`, `main`.`produces`.`currentHolder`, `main`.`produces`.`price`, `main`.`produces`.`isSold`, `main`.`produces`.`qrCode`, `main`.`produces`.`createdAt`, `main`.`produces`.`updatedAt` FROM `main`.`produces` WHERE (`main`.`produces`.`produceId` = ? AND 1=1) LIMIT ? OFFSET ?
-prisma:query UPDATE `main`.`produces` SET `status` = ?, `currentHolder` = ?, `price` = ?, `isSold` = ?, `updatedAt` = ? WHERE (`main`.`produces`.`produceId` = ? AND 1=1) RETURNING `id` AS `id`, `produceId` AS `produceId`, `farmer` AS `farmer`, `farmerName` AS `farmerName`, `produceType` AS `produceType`, `quantity` AS `quantity`, `unit` AS `unit`, `origin` AS `origin`, `harvestDate` AS `harvestDate`, `blockchainHash` AS `blockchainHash`, `status` AS `status`, `currentHolder` AS `currentHolder`, `price` AS `price`, `isSold` AS `isSold`, `qrCode` AS `qrCode`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
-prisma:query INSERT INTO `main`.`produce_history` (`id`, `produceId`, `actor`, `actorName`, `action`, `details`, `timestamp`, `location`) VALUES (?,?,?,?,?,?,?,?) RETURNING `id` AS `id`, `produceId` AS `produceId`, `actor` AS `actor`, `actorName` AS `actorName`, `action` AS `action`, `details` AS `details`, `timestamp` AS `timestamp`, `location` AS `location`
- POST /api/produce/retail 200 in 3116ms
- ○ Compiling /retailer/success ...
- ✓ Compiled /retailer/success in 4.3s (1064 modules)
- GET /retailer/success 200 in 4682ms
- GET /retailer/success 200 in 65ms
- ○ Compiling /api/produce/[id] ...
- ✓ Compiled /api/produce/[id] in 2.5s (1052 modules)
-Error: Route "/api/produce/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-    at GET (src\app\api\produce\[id]\route.ts:9:12)
-   7 | ) {
-   8 |   try {
->  9 |     const { id } = params;
-     |            ^
-  10 |
-  11 |     // Get produce details
-  12 |     const produce = await db.produce.findUnique({
-prisma:query SELECT `main`.`produces`.`id`, `main`.`produces`.`produceId`, `main`.`produces`.`farmer`, `main`.`produces`.`farmerName`, `main`.`produces`.`produceType`, `main`.`produces`.`quantity`, `main`.`produces`.`unit`, `main`.`produces`.`origin`, `main`.`produces`.`harvestDate`, `main`.`produces`.`blockchainHash`, `main`.`produces`.`status`, `main`.`produces`.`currentHolder`, `main`.`produces`.`price`, `main`.`produces`.`isSold`, `main`.`produces`.`qrCode`, `main`.`produces`.`createdAt`, `main`.`produces`.`updatedAt` FROM `main`.`produces` WHERE (`main`.`produces`.`produceId` = ? AND 1=1) LIMIT ? OFFSET ?
-prisma:query SELECT `main`.`produce_history`.`id`, `main`.`produce_history`.`produceId`, `main`.`produce_history`.`actor`, `main`.`produce_history`.`actorName`, `main`.`produce_history`.`action`, `main`.`produce_history`.`details`, `main`.`produce_history`.`timestamp`, `main`.`produce_history`.`location` FROM `main`.`produce_history` WHERE `main`.`produce_history`.`produceId` IN (?) ORDER BY `main`.`produce_history`.`timestamp` ASC LIMIT ? OFFSET ?
- GET /api/produce/CORN-2025-009 200 in 7064ms
-[32m[nodemon] restarting due to changes...[39m
-[32m[nodemon] starting `npx tsx server.ts`[39m
-> Ready on http://0.0.0.0:3000
-> Socket.IO server running at ws://0.0.0.0:3000/api/socketio
- ○ Compiling / ...
- ✓ Compiled / in 9s (812 modules)
- GET / 200 in 10802ms
- ○ Compiling /consumer ...
- ✓ Compiled /consumer in 3.1s (826 modules)
- GET /consumer 200 in 3597ms
- GET /consumer 200 in 565ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 1941ms (137 modules)
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 14.4s (1055 modules)
+ ⨯ Error: Missing locale in request config
+    at eval (src\i18n.ts:5:10)
+    at RootLayout (src\app\layout.tsx:44:30)
+  3 | export default getRequestConfig(async ({ locale }) => {
+  4 |   if (!locale) {
+> 5 |     throw new Error('Missing locale in request config');
+    |          ^
+  6 |   }
+  7 |
+  8 |   return { {
+  digest: '3117022806'
+}
+ ⨯ Error: Missing locale in request config
+    at eval (src\i18n.ts:5:10)
+    at RootLayout (src\app\layout.tsx:44:30)
+  3 | export default getRequestConfig(async ({ locale }) => {
+  4 |   if (!locale) {
+> 5 |     throw new Error('Missing locale in request config');
+    |          ^
+  6 |   }
+  7 |
+  8 |   return { {
+  digest: '3117022806'
+}
+ GET /en 500 in 14650ms
+ ⨯ Error: Missing locale in request config
+    at eval (src\i18n.ts:5:10)
+    at RootLayout (src\app\layout.tsx:44:30)
+  3 | export default getRequestConfig(async ({ locale }) => {
+  4 |   if (!locale) {
+> 5 |     throw new Error('Missing locale in request config');
+    |          ^
+  6 |   }
+  7 |
+  8 |   return { {
+  digest: '4061420120'
+}
+ GET /en 500 in 681ms
+ ⨯ Error: Missing locale in request config
+    at eval (src\i18n.ts:5:10)
+    at RootLayout (src\app\layout.tsx:44:30)
+  3 | export default getRequestConfig(async ({ locale }) => {
+  4 |   if (!locale) {
+> 5 |     throw new Error('Missing locale in request config');
+    |          ^
+  6 |   }
+  7 |
+  8 |   return { {
+  digest: '4061420120'
+}
+ GET /favicon.ico 500 in 843ms
 [32m[nodemon] restarting due to changes...[39m
 [32m[nodemon] starting `npx tsx server.ts`[39m

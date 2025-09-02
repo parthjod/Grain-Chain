@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { Navigation } from "@/components/Navigation";
+import { Navigation } from "@/components/navigation";
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,17 +36,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  params: { locale }
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
+  const messages = useMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <Navigation />
-        {children}
-        <Toaster />
+        <NextIntlClientProvider messages={messages}>
+          <Navigation />
+          {children}
+          <Toaster />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
