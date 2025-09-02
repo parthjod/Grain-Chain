@@ -84,7 +84,7 @@ export default function DistributorSuccessPage() {
                   <div className="bg-blue-50 p-4 rounded-lg">
                     <h4 className="font-semibold text-blue-800 mb-2">Blockchain Confirmation</h4>
                     <p className="text-sm text-blue-700">
-                      This status update has been permanently recorded on the blockchain and cannot be altered. 
+                      This status update has been permanently recorded on the blockchain and cannot be altered.
                       All stakeholders can now verify the current location and status of this produce.
                     </p>
                   </div>
@@ -95,8 +95,8 @@ export default function DistributorSuccessPage() {
                 <Button onClick={handleBack} className="bg-blue-600 hover:bg-blue-700">
                   Update Another
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => router.push('/')}
                 >
                   Back to Home

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -60,11 +60,11 @@ export default function FarmerPage() {
           title: "Success",
           description: "Produce registered successfully! QR code generated.",
         });
-        
+
         // Store QR code in localStorage for display
         localStorage.setItem('lastQRCode', data.qrCode);
         localStorage.setItem('lastProduceId', formData.produceId);
-        
+
         // Redirect to a success page or show QR code
         router.push('/farmer/success');
       } else {
@@ -212,8 +212,8 @@ export default function FarmerPage() {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="w-full bg-green-600 hover:bg-green-700"
                     disabled={isLoading}
                   >
@@ -240,7 +240,7 @@ export default function FarmerPage() {
                   origin={formData.origin}
                   harvestDate={formData.harvestDate}
                 />
-                
+
                 <div className="mt-6 space-y-3">
                   <div className="text-sm">
                     <span className="font-medium text-green-700">Produce ID:</span>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -57,7 +57,7 @@ export default function RetailerPage() {
           title: "Success",
           description: "Produce arrival confirmed and price set!",
         });
-        
+
         router.push('/retailer/success');
       } else {
         toast({
@@ -200,8 +200,8 @@ export default function RetailerPage() {
                 </ul>
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-purple-600 hover:bg-purple-700"
                 disabled={isLoading}
               >
