@@ -6,59 +6,8 @@
 > Ready on http://0.0.0.0:3000
 > Socket.IO server running at ws://0.0.0.0:3000/api/socketio
  ○ Compiling /middleware ...
- ✓ Compiled /middleware in 1941ms (137 modules)
+ ✓ Compiled /middleware in 3.5s (137 modules)
  ○ Compiling /[locale] ...
- ✓ Compiled /[locale] in 14.4s (1055 modules)
- ⨯ Error: Missing locale in request config
-    at eval (src\i18n.ts:5:10)
-    at RootLayout (src\app\layout.tsx:44:30)
-  3 | export default getRequestConfig(async ({ locale }) => {
-  4 |   if (!locale) {
-> 5 |     throw new Error('Missing locale in request config');
-    |          ^
-  6 |   }
-  7 |
-  8 |   return { {
-  digest: '3117022806'
-}
- ⨯ Error: Missing locale in request config
-    at eval (src\i18n.ts:5:10)
-    at RootLayout (src\app\layout.tsx:44:30)
-  3 | export default getRequestConfig(async ({ locale }) => {
-  4 |   if (!locale) {
-> 5 |     throw new Error('Missing locale in request config');
-    |          ^
-  6 |   }
-  7 |
-  8 |   return { {
-  digest: '3117022806'
-}
- GET /en 500 in 14650ms
- ⨯ Error: Missing locale in request config
-    at eval (src\i18n.ts:5:10)
-    at RootLayout (src\app\layout.tsx:44:30)
-  3 | export default getRequestConfig(async ({ locale }) => {
-  4 |   if (!locale) {
-> 5 |     throw new Error('Missing locale in request config');
-    |          ^
-  6 |   }
-  7 |
-  8 |   return { {
-  digest: '4061420120'
-}
- GET /en 500 in 681ms
- ⨯ Error: Missing locale in request config
-    at eval (src\i18n.ts:5:10)
-    at RootLayout (src\app\layout.tsx:44:30)
-  3 | export default getRequestConfig(async ({ locale }) => {
-  4 |   if (!locale) {
-> 5 |     throw new Error('Missing locale in request config');
-    |          ^
-  6 |   }
-  7 |
-  8 |   return { {
-  digest: '4061420120'
-}
- GET /favicon.ico 500 in 843ms
-[32m[nodemon] restarting due to changes...[39m
-[32m[nodemon] starting `npx tsx server.ts`[39m
+ ✓ Compiled /[locale] in 16.2s (1063 modules)
+Invalid locale: undefined
+ GET /en 404 in 20800ms
