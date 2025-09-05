@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { useTranslations } from 'next-intl';
 
 interface ProduceData {
   produceId: string;
@@ -15,6 +16,7 @@ interface ProduceData {
 }
 
 export default function DistributorSuccessPage() {
+  const t = useTranslations('DistributorSuccess');
   const router = useRouter();
   const [produceData, setProduceData] = useState<ProduceData | null>(null);
 
@@ -38,14 +40,14 @@ export default function DistributorSuccessPage() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-blue-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-blue-600">Status Update Successful!</p>
+          <p className="text-lg text-blue-600">{t('title')}</p>
         </div>
 
         <Card className="shadow-lg">
           <CardHeader className="bg-blue-600 text-white">
-            <CardTitle className="text-2xl">Logistics Updated</CardTitle>
+            <CardTitle className="text-2xl">{t('logisticsUpdated')}</CardTitle>
             <CardDescription className="text-blue-100">
-              The produce status has been successfully updated on the blockchain
+              {t('logisticsUpdatedDescription')}
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
@@ -54,20 +56,20 @@ export default function DistributorSuccessPage() {
                 <div className="space-y-4">
                   <div className="text-center">
                     <Badge variant="secondary" className="text-lg px-4 py-2 mb-4">
-                      Produce ID: {produceData.produceId}
+                      {t('produceIdLabel', { produceId: produceData.produceId })}
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <h3 className="font-semibold text-gray-700">Current Status</h3>
+                      <h3 className="font-semibold text-gray-700">{t('currentStatus')}</h3>
                       <Badge className="bg-blue-100 text-blue-800">
                         {produceData.status}
                       </Badge>
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="font-semibold text-gray-700">Location</h3>
+                      <h3 className="font-semibold text-gray-700">{t('location')}</h3>
                       <p className="text-gray-600">{produceData.location}</p>
                     </div>
                   </div>
@@ -75,17 +77,16 @@ export default function DistributorSuccessPage() {
                   <Separator />
 
                   <div className="space-y-2">
-                    <h3 className="font-semibold text-gray-700">Update Time</h3>
+                    <h3 className="font-semibold text-gray-700">{t('updateTime')}</h3>
                     <p className="text-gray-600">
                       {new Date(produceData.timestamp).toLocaleString()}
                     </p>
                   </div>
 
                   <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-800 mb-2">Blockchain Confirmation</h4>
+                    <h4 className="font-semibold text-blue-800 mb-2">{t('blockchainConfirmation')}</h4>
                     <p className="text-sm text-blue-700">
-                      This status update has been permanently recorded on the blockchain and cannot be altered.
-                      All stakeholders can now verify the current location and status of this produce.
+                      {t('blockchainConfirmationDescription')}
                     </p>
                   </div>
                 </div>
@@ -93,13 +94,13 @@ export default function DistributorSuccessPage() {
 
               <div className="flex gap-4 justify-center">
                 <Button onClick={handleBack} className="bg-blue-600 hover:bg-blue-700">
-                  Update Another
+                  {t('updateAnother')}
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => router.push('/')}
                 >
-                  Back to Home
+                  {t('backToHome')}
                 </Button>
               </div>
             </div>
@@ -109,14 +110,13 @@ export default function DistributorSuccessPage() {
         <div className="mt-8">
           <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-lg">Next Steps</CardTitle>
+              <CardTitle className="text-lg">{t('nextSteps')}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>• Continue monitoring the produce as it moves through the supply chain</li>
-                <li>• Update the status whenever the produce reaches a new location</li>
-                <li>• Notify the next stakeholder when the produce is ready for handover</li>
-                <li>• All updates are transparent and verifiable on the blockchain</li>
+                {t.raw('nextStepsItems').map((item: string, index: number) => (
+                  <li key={index}>• {item}</li>
+                ))}
               </ul>
             </CardContent>
           </Card>

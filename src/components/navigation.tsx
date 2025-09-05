@@ -1,72 +1,50 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { Link, pathnames } from '@/navigation'; // Use Link from next-intl
+import { usePathname } from 'next/navigation'; // This is fine for getting the path
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { useLocale } from 'next-intl';
+import LocaleSwitcher from './LocaleSwitcher'; // Import the new switcher
 
-const navigation = [
-  { name: 'Farmer', href: '/farmer', description: 'Register new produce', color: 'bg-green-600 hover:bg-green-700' },
-  { name: 'Distributor', href: '/distributor', description: 'Update logistics', color: 'bg-blue-600 hover:bg-blue-700' },
-  { name: 'Retailer', href: '/retailer', description: 'Confirm arrival & set price', color: 'bg-purple-600 hover:bg-purple-700' },
-  { name: 'Consumer', href: '/consumer', description: 'Trace product journey', color: 'bg-orange-600 hover:bg-orange-700' },
+type AppPathnames = keyof typeof pathnames;
+
+const navigation: { name: string; href: AppPathnames; color: string }[] = [
+  { name: 'Farmer', href: '/farmer', color: 'bg-green-600 hover:bg-green-700' },
+  { name: 'Distributor', href: '/distributor', color: 'bg-blue-600 hover:bg-blue-700' },
+  { name: 'Retailer', href: '/retailer', color: 'bg-purple-600 hover:bg-purple-700' },
+  { name: 'Consumer', href: '/consumer', color: 'bg-orange-600 hover:bg-orange-700' },
 ];
-
-function LanguageSwitcher() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const locale = useLocale();
-
-  const handleLocaleChange = (newLocale: string) => {
-    router.replace(`/${newLocale}${pathname.substring(3)}`);
-  };
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">{locale.toUpperCase()}</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem onSelect={() => handleLocaleChange('en')}>English</DropdownMenuItem>
-        <DropdownMenuItem onSelect={() => handleLocaleChange('hi')}>Hindi</DropdownMenuItem>
-        <DropdownMenuItem onSelect={() => handleLocaleChange('or')}>Odia</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
 
 export function Navigation() {
   const pathname = usePathname();
 
-  if (pathname === '/' || pathname === '/en' || pathname === '/hi' || pathname === '/or') {
-    return null;
-  }
-
-
   return (
-    <nav className="bg-white shadow-sm border-b">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center">
-            <h1 className="text-2xl font-bold text-gray-900">GrainChain</h1>
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 items-center">
+        <div className="mr-4 hidden md:flex">
+          <Link href="/" className="mr-6 flex items-center space-x-2">
+            <span className="hidden font-bold sm:inline-block">GrainChain</span>
           </Link>
-          <div className="flex items-center space-x-4">
+          <nav className="flex items-center space-x-6 text-sm font-medium">
             {navigation.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <Button
-                  variant={pathname.includes(item.href) ? "default" : "outline"}
-                  className={pathname.includes(item.href) ? item.color : ""}
-                >
-                  {item.name}
-                </Button>
+              <Link
+                key={item.name}
+                href={item.href}
+                className={pathname.includes(item.href) ? "text-foreground" : "text-foreground/60"}
+              >
+                {item.name}
               </Link>
             ))}
-            <LanguageSwitcher />
+          </nav>
+        </div>
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <div className="w-full flex-1 md:w-auto md:flex-none">
+            {/* Can add a search bar here if needed */}
           </div>
+          <nav className="flex items-center">
+            <LocaleSwitcher />
+          </nav>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

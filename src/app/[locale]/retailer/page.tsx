@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslations } from 'next-intl';
 
 interface RetailerFormData {
   produceId: string;
@@ -21,6 +22,7 @@ interface RetailerFormData {
 }
 
 export default function RetailerPage() {
+  const t = useTranslations('Retailer');
   const router = useRouter();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -54,22 +56,22 @@ export default function RetailerPage() {
 
       if (data.success) {
         toast({
-          title: "Success",
-          description: "Produce arrival confirmed and price set!",
+          title: t('success'),
+          description: t('successMessage'),
         });
 
         router.push('/retailer/success');
       } else {
         toast({
-          title: "Error",
-          description: data.error || "Failed to confirm arrival",
+          title: t('error'),
+          description: data.error || t('errorMessage'),
           variant: "destructive",
         });
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to confirm arrival",
+        title: t('error'),
+        description: t('errorMessage'),
         variant: "destructive",
       });
     } finally {
@@ -88,25 +90,25 @@ export default function RetailerPage() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 p-4">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-purple-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-purple-600">Retailer Portal - Confirm Arrival & Set Price</p>
+          <h1 className="text-4xl font-bold text-purple-800 mb-2">{t('grainChain')}</h1>
+          <p className="text-lg text-purple-600">{t('title')}</p>
         </div>
 
         <Card className="shadow-lg">
           <CardHeader className="bg-purple-600 text-white">
-            <CardTitle className="text-2xl">Confirm Produce Arrival</CardTitle>
+            <CardTitle className="text-2xl">{t('confirmArrival')}</CardTitle>
             <CardDescription className="text-purple-100">
-              Confirm the arrival of produce and set the retail price
+              {t('confirmArrivalDescription')}
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="produceId">Produce ID</Label>
+                  <Label htmlFor="produceId">{t('produceId')}</Label>
                   <Input
                     id="produceId"
-                    placeholder="e.g., GRAIN-2024-001"
+                    placeholder={t('produceIdPlaceholder')}
                     value={formData.produceId}
                     onChange={(e) => handleChange('produceId', e.target.value)}
                     required
@@ -114,10 +116,10 @@ export default function RetailerPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="retailerName">Retailer Name</Label>
+                  <Label htmlFor="retailerName">{t('retailerName')}</Label>
                   <Input
                     id="retailerName"
-                    placeholder="Your store name"
+                    placeholder={t('retailerNamePlaceholder')}
                     value={formData.retailerName}
                     onChange={(e) => handleChange('retailerName', e.target.value)}
                     required
@@ -125,12 +127,12 @@ export default function RetailerPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="price">Retail Price ($)</Label>
+                  <Label htmlFor="price">{t('retailPrice')}</Label>
                   <Input
                     id="price"
                     type="number"
                     step="0.01"
-                    placeholder="e.g., 4.99"
+                    placeholder={t('retailPricePlaceholder')}
                     value={formData.price}
                     onChange={(e) => handleChange('price', e.target.value)}
                     required
@@ -138,40 +140,40 @@ export default function RetailerPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="quality">Quality Assessment</Label>
+                  <Label htmlFor="quality">{t('qualityAssessment')}</Label>
                   <Select value={formData.quality} onValueChange={(value) => handleChange('quality', value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select quality" />
+                      <SelectValue placeholder={t('selectQuality')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="excellent">Excellent</SelectItem>
-                      <SelectItem value="good">Good</SelectItem>
-                      <SelectItem value="fair">Fair</SelectItem>
-                      <SelectItem value="poor">Poor</SelectItem>
+                      <SelectItem value="excellent">{t('excellent')}</SelectItem>
+                      <SelectItem value="good">{t('good')}</SelectItem>
+                      <SelectItem value="fair">{t('fair')}</SelectItem>
+                      <SelectItem value="poor">{t('poor')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="condition">Condition</Label>
+                  <Label htmlFor="condition">{t('condition')}</Label>
                   <Select value={formData.condition} onValueChange={(value) => handleChange('condition', value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select condition" />
+                      <SelectValue placeholder={t('selectCondition')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="fresh">Fresh</SelectItem>
-                      <SelectItem value="good">Good</SelectItem>
-                      <SelectItem value="acceptable">Acceptable</SelectItem>
-                      <SelectItem value="damaged">Damaged</SelectItem>
+                      <SelectItem value="fresh">{t('fresh')}</SelectItem>
+                      <SelectItem value="good">{t('good')}</SelectItem>
+                      <SelectItem value="acceptable">{t('acceptable')}</SelectItem>
+                      <SelectItem value="damaged">{t('damaged')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="walletAddress">Wallet Address</Label>
+                  <Label htmlFor="walletAddress">{t('walletAddress')}</Label>
                   <Input
                     id="walletAddress"
-                    placeholder="0x..."
+                    placeholder={t('walletAddressPlaceholder')}
                     value={formData.walletAddress}
                     onChange={(e) => handleChange('walletAddress', e.target.value)}
                     required
@@ -180,10 +182,10 @@ export default function RetailerPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="shelfLocation">Shelf Location</Label>
+                <Label htmlFor="shelfLocation">{t('shelfLocation')}</Label>
                 <Textarea
                   id="shelfLocation"
-                  placeholder="e.g., Aisle 3, Section B, Shelf 2"
+                  placeholder={t('shelfLocationPlaceholder')}
                   value={formData.shelfLocation}
                   onChange={(e) => handleChange('shelfLocation', e.target.value)}
                   required
@@ -191,12 +193,11 @@ export default function RetailerPage() {
               </div>
 
               <div className="bg-purple-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-purple-800 mb-2">Price Setting Guidelines</h4>
+                <h4 className="font-semibold text-purple-800 mb-2">{t('priceSettingGuidelines')}</h4>
                 <ul className="text-sm text-purple-700 space-y-1">
-                  <li>• Consider the quality and condition of the produce</li>
-                  <li>• Factor in transportation and storage costs</li>
-                  <li>• Research current market prices for similar products</li>
-                  <li>• Set a competitive but profitable price</li>
+                  {t.raw('priceSettingGuidelinesItems').map((item: string, index: number) => (
+                    <li key={index}>• {item}</li>
+                  ))}
                 </ul>
               </div>
 
@@ -205,7 +206,7 @@ export default function RetailerPage() {
                 className="w-full bg-purple-600 hover:bg-purple-700"
                 disabled={isLoading}
               >
-                {isLoading ? 'Confirming...' : 'Confirm Arrival & Set Price'}
+                {isLoading ? t('confirming') : t('confirmAndSetPrice')}
               </Button>
             </form>
           </CardContent>
@@ -214,25 +215,25 @@ export default function RetailerPage() {
         <div className="mt-8">
           <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-lg">Quality Assessment Guide</CardTitle>
+              <CardTitle className="text-lg">{t('qualityAssessmentGuide')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <h4 className="font-semibold text-purple-600">Excellent</h4>
-                  <p className="text-gray-600">Premium quality, no defects</p>
+                  <h4 className="font-semibold text-purple-600">{t('excellent')}</h4>
+                  <p className="text-gray-600">{t('excellentDescription')}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-purple-600">Good</h4>
-                  <p className="text-gray-600">Minor cosmetic issues</p>
+                  <h4 className="font-semibold text-purple-600">{t('good')}</h4>
+                  <p className="text-gray-600">{t('goodDescription')}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-purple-600">Fair</h4>
-                  <p className="text-gray-600">Noticeable defects</p>
+                  <h4 className="font-semibold text-purple-600">{t('fair')}</h4>
+                  <p className="text-gray-600">{t('fairDescription')}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-purple-600">Poor</h4>
-                  <p className="text-gray-600">Major defects, lower quality</p>
+                  <h4 className="font-semibold text-purple-600">{t('poor')}</h4>
+                  <p className="text-gray-600">{t('poorDescription')}</p>
                 </div>
               </div>
             </CardContent>

@@ -18,7 +18,7 @@ export function useBlockchain() {
       
       // Switch to Sepolia network
       await blockchainService.switchToSepolia();
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setIsLoading(false);
@@ -36,7 +36,7 @@ export function useBlockchain() {
     setError('');
 
     try {
-      const hash = blockchainService.generateProduceHash(data);
+      const hash = await blockchainService.generateHash(data);
       const timestamp = Math.floor(Date.now() / 1000);
       
       const tx = await blockchainService.registerProduce(
@@ -48,7 +48,7 @@ export function useBlockchain() {
 
       await tx.wait();
       return { success: true, transactionHash: tx.hash, hash };
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       return { success: false, error: err.message };
     } finally {
@@ -76,7 +76,7 @@ export function useBlockchain() {
 
       await tx.wait();
       return { success: true, transactionHash: tx.hash };
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       return { success: false, error: err.message };
     } finally {
@@ -98,13 +98,13 @@ export function useBlockchain() {
       const tx = await blockchainService.retailEntry(
         data.produceId,
         data.retailer,
-        data.price,
+        data.price.toString(),
         timestamp
       );
 
       await tx.wait();
       return { success: true, transactionHash: tx.hash };
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       return { success: false, error: err.message };
     } finally {
@@ -116,7 +116,7 @@ export function useBlockchain() {
     try {
       const produce = await blockchainService.getProduce(produceId);
       return { success: true, produce };
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       return { success: false, error: err.message };
     }
@@ -126,7 +126,7 @@ export function useBlockchain() {
     try {
       const history = await blockchainService.getHistory(produceId);
       return { success: true, history };
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
       return { success: false, error: err.message };
     }
@@ -142,7 +142,7 @@ export function useBlockchain() {
             setAccount(accounts[0]);
             setIsConnected(true);
           }
-        } catch (err) {
+        } catch (err: any) {
           console.error('Error checking wallet connection:', err);
         }
       }
@@ -150,9 +150,7 @@ export function useBlockchain() {
 
     checkConnection();
 
-    // Listen for account changes
-    if (typeof window !== 'undefined' && window.ethereum) {
-      window.ethereum.on('accountsChanged', (accounts: string[]) => {
+    const handleAccountsChanged = (accounts: string[]) => {
         if (accounts.length > 0) {
           setAccount(accounts[0]);
           setIsConnected(true);
@@ -160,12 +158,18 @@ export function useBlockchain() {
           setAccount('');
           setIsConnected(false);
         }
-      });
+      };
+
+    // Listen for account changes
+    if (typeof window !== 'undefined' && window.ethereum) {
+      window.ethereum.on('accountsChanged', handleAccountsChanged);
     }
 
     // Clean up
     return () => {
-      blockchainService.removeAllListeners();
+      if (typeof window !== 'undefined' && window.ethereum) {
+        window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+      }
     };
   }, []);
 

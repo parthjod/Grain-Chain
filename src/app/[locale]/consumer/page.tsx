@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslations } from 'next-intl';
 
 interface ProduceData {
   produceId: string;
@@ -39,7 +40,11 @@ interface TimelineStep {
   status: 'completed' | 'current' | 'upcoming';
 }
 
+import { useLocale } from 'next-intl';
+
 export default function ConsumerPage() {
+  const t = useTranslations('Consumer');
+  const locale = useLocale();
   const { toast } = useToast();
   const [scanning, setScanning] = useState(false);
   const [produceData, setProduceData] = useState<ProduceData | null>(null);
@@ -62,23 +67,23 @@ export default function ConsumerPage() {
             generateTimeline(result.produce);
             setScanning(false);
             toast({
-              title: "Success",
-              description: "Produce information loaded successfully!",
+              title: t('success'),
+              description: t('successMessage'),
             });
           } else {
-            setError('Produce not found');
+            setError(t('errorMessage'));
             toast({
-              title: "Error",
-              description: "Produce not found in database",
+              title: t('error'),
+              description: t('errorMessage'),
               variant: "destructive",
             });
           }
         }
       } catch (err) {
-        setError('Invalid QR code format');
+        setError(t('invalidQRCode'));
         toast({
-          title: "Error",
-          description: "Invalid QR code format",
+          title: t('error'),
+          description: t('invalidQRCode'),
           variant: "destructive",
         });
       }
@@ -87,15 +92,15 @@ export default function ConsumerPage() {
 
   const handleError = (err: any) => {
     console.error(err);
-    setError('Camera access denied or not available');
+    setError(t('cameraError'));
   };
 
   const generateTimeline = (data: ProduceData) => {
     const steps: TimelineStep[] = [
       {
         id: '1',
-        title: 'Farm Registration',
-        description: `${data.produceType} registered by ${data.farmerName}`,
+        title: t('farmRegistration'),
+        description: `${data.produceType} ${t('registeredBy')} ${data.farmerName}`,
         actor: data.farmerName,
         timestamp: data.harvestDate,
         status: 'completed'
@@ -106,7 +111,7 @@ export default function ConsumerPage() {
       steps.push({
         id: (index + 2).toString(),
         title: entry.action,
-        description: entry.details || `${entry.action} by ${entry.actorName}`,
+        description: entry.details || `${entry.action} ${t('by', { actor: entry.actorName })}`,
         actor: entry.actorName,
         timestamp: entry.timestamp,
         location: entry.location,
@@ -138,45 +143,45 @@ export default function ConsumerPage() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-100 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-orange-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-orange-600">Consumer Portal - Trace Your Food</p>
+          <h1 className="text-4xl font-bold text-orange-800 mb-2">{t('grainChain')}</h1>
+          <p className="text-lg text-orange-600">{t('title')}</p>
         </div>
 
         {!scanning && !produceData && (
           <Card className="shadow-lg">
             <CardHeader className="bg-orange-600 text-white">
-              <CardTitle className="text-2xl">Scan QR Code</CardTitle>
+              <CardTitle className="text-2xl">{t('scanQRCode')}</CardTitle>
               <CardDescription className="text-orange-100">
-                Scan the QR code on the product packaging to trace its journey
+                {t('scanQRCodeDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent className="p-6">
               <div className="text-center space-y-6">
                 <div className="bg-orange-50 p-8 rounded-lg">
-                  <div className="text-6xl mb-4">📱</div>
+                  <div className="text-6xl mb-4">{t('emoji')}</div>
                   <p className="text-gray-600 mb-6">
-                    Click the button below to start scanning and discover the complete journey of your food
+                    {t('scanButtonDescription')}
                   </p>
                   <Button 
                     onClick={() => setScanning(true)}
                     className="bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3"
                   >
-                    Start Scanning
+                    {t('scanButton')}
                   </Button>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                   <div className="bg-white p-4 rounded-lg shadow">
-                    <h3 className="font-semibold text-orange-600 mb-2">🌱 Farm to Table</h3>
-                    <p className="text-gray-600">Trace the complete journey from farm to your table</p>
+                    <h3 className="font-semibold text-orange-600 mb-2">{t('farmToTable')}</h3>
+                    <p className="text-gray-600">{t('farmToTableDescription')}</p>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow">
-                    <h3 className="font-semibold text-orange-600 mb-2">🔒 Blockchain Verified</h3>
-                    <p className="text-gray-600">All information is securely stored on the blockchain</p>
+                    <h3 className="font-semibold text-orange-600 mb-2">{t('blockchainVerified')}</h3>
+                    <p className="text-gray-600">{t('blockchainVerifiedDescription')}</p>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow">
-                    <h3 className="font-semibold text-orange-600 mb-2">👁️ Full Transparency</h3>
-                    <p className="text-gray-600">See every step of the supply chain in real-time</p>
+                    <h3 className="font-semibold text-orange-600 mb-2">{t('fullTransparency')}</h3>
+                    <p className="text-gray-600">{t('fullTransparencyDescription')}</p>
                   </div>
                 </div>
               </div>
@@ -187,9 +192,9 @@ export default function ConsumerPage() {
         {scanning && (
           <Card className="shadow-lg">
             <CardHeader className="bg-orange-600 text-white">
-              <CardTitle className="text-2xl">Scanning QR Code</CardTitle>
+              <CardTitle className="text-2xl">{t('scanning')}</CardTitle>
               <CardDescription className="text-orange-100">
-                Point your camera at the QR code on the product packaging
+                {t('scanningDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent className="p-6">
@@ -214,7 +219,7 @@ export default function ConsumerPage() {
                     onClick={() => setScanning(false)}
                     variant="outline"
                   >
-                    Cancel Scanning
+                    {t('cancel')}
                   </Button>
                 </div>
               </div>
@@ -226,50 +231,50 @@ export default function ConsumerPage() {
           <div className="space-y-6">
             <Card className="shadow-lg">
               <CardHeader className="bg-orange-600 text-white">
-                <CardTitle className="text-2xl">Product Journey</CardTitle>
+                <CardTitle className="text-2xl">{t('productJourney')}</CardTitle>
                 <CardDescription className="text-orange-100">
-                  Complete traceability from farm to table
+                  {t('productJourneyDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div className="space-y-4">
                     <div>
-                      <h3 className="font-semibold text-gray-700">Product ID</h3>
+                      <h3 className="font-semibold text-gray-700">{t('produceId')}</h3>
                       <Badge variant="secondary" className="text-sm">
                         {produceData.produceId}
                       </Badge>
                     </div>
                     
                     <div>
-                      <h3 className="font-semibold text-gray-700">Product Type</h3>
+                      <h3 className="font-semibold text-gray-700">{t('produceType')}</h3>
                       <p className="text-lg font-medium text-orange-600">{produceData.produceType}</p>
                     </div>
                     
                     <div>
-                      <h3 className="font-semibold text-gray-700">Farmer</h3>
+                      <h3 className="font-semibold text-gray-700">{t('farmer')}</h3>
                       <p className="text-gray-600">{produceData.farmerName}</p>
                     </div>
                     
                     <div>
-                      <h3 className="font-semibold text-gray-700">Origin</h3>
+                      <h3 className="font-semibold text-gray-700">{t('origin')}</h3>
                       <p className="text-gray-600">{produceData.origin}</p>
                     </div>
                   </div>
                   
                   <div className="space-y-4">
                     <div>
-                      <h3 className="font-semibold text-gray-700">Quantity</h3>
+                      <h3 className="font-semibold text-gray-700">{t('quantity')}</h3>
                       <p className="text-lg">{produceData.quantity} {produceData.unit}</p>
                     </div>
                     
                     <div>
-                      <h3 className="font-semibold text-gray-700">Harvest Date</h3>
+                      <h3 className="font-semibold text-gray-700">{t('harvestDate')}</h3>
                       <p className="text-gray-600">{formatDate(produceData.harvestDate)}</p>
                     </div>
                     
                     <div>
-                      <h3 className="font-semibold text-gray-700">Current Status</h3>
+                      <h3 className="font-semibold text-gray-700">{t('currentStatus')}</h3>
                       <Badge className="bg-green-100 text-green-800">
                         {produceData.status}
                       </Badge>
@@ -277,7 +282,7 @@ export default function ConsumerPage() {
                     
                     {produceData.price && (
                       <div>
-                        <h3 className="font-semibold text-gray-700">Retail Price</h3>
+                        <h3 className="font-semibold text-gray-700">{t('retailPrice')}</h3>
                         <p className="text-lg font-medium text-green-600">${produceData.price}</p>
                       </div>
                     )}
@@ -287,7 +292,7 @@ export default function ConsumerPage() {
                 <Separator />
 
                 <div className="mt-6">
-                  <h3 className="text-xl font-semibold mb-4">Journey Timeline</h3>
+                  <h3 className="text-xl font-semibold mb-4">{t('journeyTimeline')}</h3>
                   <div className="space-y-4">
                     {timeline.map((step, index) => (
                       <div key={step.id} className="flex items-start space-x-4">
@@ -302,9 +307,9 @@ export default function ConsumerPage() {
                             <h4 className="font-semibold text-gray-800">{step.title}</h4>
                             <p className="text-gray-600 text-sm">{step.description}</p>
                             <div className="mt-2 text-xs text-gray-500">
-                              <p>By: {step.actor}</p>
+                              <p>{t('by', { actor: step.actor })}</p>
                               <p>{formatDate(step.timestamp)}</p>
-                              {step.location && <p>Location: {step.location}</p>}
+                              {step.location && <p>{t('location', { location: step.location })}</p>}
                             </div>
                           </div>
                         </div>
@@ -315,7 +320,7 @@ export default function ConsumerPage() {
 
                 <div className="mt-6 text-center">
                   <Button onClick={resetScanner} className="bg-orange-600 hover:bg-orange-700">
-                    Scan Another Product
+                    {t('scanAnother')}
                   </Button>
                 </div>
               </CardContent>
@@ -323,15 +328,13 @@ export default function ConsumerPage() {
 
             <Card className="shadow-md">
               <CardHeader>
-                <CardTitle className="text-lg">Blockchain Verification</CardTitle>
+                <CardTitle className="text-lg">{t('blockchainVerification')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="bg-orange-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-orange-800 mb-2">✅ Verified on Blockchain</h4>
+                  <h4 className="font-semibold text-orange-800 mb-2">{t('blockchainVerificationDescription')}</h4>
                   <p className="text-sm text-orange-700">
-                    All the information displayed above has been verified and stored on the blockchain. 
-                    This ensures the data is authentic, tamper-proof, and transparent. 
-                    You can trust that this product has been through a verified supply chain.
+                    {t('blockchainVerificationDetail')}
                   </p>
                 </div>
               </CardContent>

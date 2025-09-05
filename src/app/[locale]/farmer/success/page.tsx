@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useTranslations } from 'next-intl';
 
 export default function FarmerSuccessPage() {
   const router = useRouter();
+  const t = useTranslations('FarmerSuccess');
   const [qrCode, setQrCode] = useState<string>('');
   const [produceId, setProduceId] = useState<string>('');
 
@@ -32,25 +34,25 @@ export default function FarmerSuccessPage() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 p-4">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-green-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-green-600">Registration Successful!</p>
+          <h1 className="text-4xl font-bold text-green-800 mb-2">{t('title')}</h1>
+          <p className="text-lg text-green-600">{t('produceRegistered')}</p>
         </div>
 
         <Card className="shadow-lg">
           <CardHeader className="bg-green-600 text-white">
-            <CardTitle className="text-2xl">Produce Registered</CardTitle>
+            <CardTitle className="text-2xl">{t('produceRegistered')}</CardTitle>
             <CardDescription className="text-green-100">
-              Your produce has been successfully registered on the blockchain
+              {t('produceRegisteredDescription')}
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="text-center space-y-6">
               <div className="space-y-2">
                 <Badge variant="secondary" className="text-lg px-4 py-2">
-                  Produce ID: {produceId}
+                  {t('produceIdLabel', { produceId })}
                 </Badge>
                 <p className="text-gray-600">
-                  Save this QR code and attach it to your produce packaging
+                  {t('saveQRCode')}
                 </p>
               </div>
 
@@ -59,20 +61,20 @@ export default function FarmerSuccessPage() {
                   <div className="bg-white p-4 rounded-lg shadow-md inline-block">
                     <img 
                       src={qrCode} 
-                      alt="Produce QR Code" 
+                      alt={t('produceQRCode')} 
                       className="w-64 h-64"
                     />
                   </div>
                   
                   <div className="flex gap-4 justify-center">
                     <Button onClick={handleDownload} className="bg-green-600 hover:bg-green-700">
-                      Download QR Code
+                      {t('downloadQRCode')}
                     </Button>
                     <Button 
                       variant="outline" 
                       onClick={() => router.push('/farmer')}
                     >
-                      Register Another
+                      {t('registerAnother')}
                     </Button>
                   </div>
                 </div>
@@ -83,9 +85,7 @@ export default function FarmerSuccessPage() {
 
         <div className="mt-8 text-center">
           <p className="text-gray-600">
-            This QR code contains all the information about your produce. 
-            Distributors, retailers, and consumers can scan it to verify the authenticity 
-            and track the journey of your produce through the supply chain.
+            {t('qrCodeInfo')}
           </p>
         </div>
       </div>

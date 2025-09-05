@@ -1,5 +1,5 @@
 // Import contract types and ABI
-import { ethers } from 'ethers';
+import { Contract, formatEther, Interface, Provider, Signer } from 'ethers';
 
 // ProduceChain contract ABI
 export const ProduceChainABI = [
@@ -16,9 +16,9 @@ export const ProduceChainABI = [
 
 // Contract factory types
 export const ProduceChain__factory = {
-  createInterface: () => new ethers.utils.Interface(ProduceChainABI),
-  connect: (address: string, signerOrProvider: ethers.Signer | ethers.providers.Provider) => {
-    return new ethers.Contract(address, ProduceChainABI, signerOrProvider);
+  createInterface: () => new Interface(ProduceChainABI),
+  connect: (address: string, signerOrProvider: Signer | Provider) => {
+    return new Contract(address, ProduceChainABI, signerOrProvider);
   }
 };
 
@@ -45,8 +45,8 @@ export const NETWORK_CONFIG = {
 };
 
 // Helper functions
-export const getContract = (signerOrProvider: ethers.Signer | ethers.providers.Provider) => {
-  return new ethers.Contract(CONTRACT_CONFIG.address, CONTRACT_CONFIG.abi, signerOrProvider);
+export const getContract = (signerOrProvider: Signer | Provider) => {
+  return new Contract(CONTRACT_CONFIG.address, CONTRACT_CONFIG.abi, signerOrProvider);
 };
 
 export const formatProduceData = (produceData: any) => {
@@ -57,7 +57,7 @@ export const formatProduceData = (produceData: any) => {
     hash: produceData.hash,
     status: produceData.status,
     currentHolder: produceData.currentHolder,
-    price: ethers.utils.formatEther(produceData.price),
+    price: formatEther(produceData.price),
     isSold: produceData.isSold
   };
 };

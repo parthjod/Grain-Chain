@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import FinalJourneyQR from '@/components/FinalJourneyQR';
+import { useTranslations } from 'next-intl';
 
 interface CompleteProduceData {
   produceId: string;
@@ -31,6 +32,7 @@ interface CompleteProduceData {
 }
 
 export default function RetailerSuccessPage() {
+  const t = useTranslations('RetailerSuccess');
   const router = useRouter();
   const [produceData, setProduceData] = useState<CompleteProduceData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -68,7 +70,7 @@ export default function RetailerSuccessPage() {
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 p-4 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
-          <p className="text-purple-600">Loading complete journey data...</p>
+          <p className="text-purple-600">{t('loading')}</p>
         </div>
       </div>
     );
@@ -80,10 +82,10 @@ export default function RetailerSuccessPage() {
         <Card className="shadow-lg max-w-md">
           <CardContent className="p-6">
             <div className="text-center">
-              <h2 className="text-xl font-semibold text-red-600 mb-2">Error</h2>
-              <p className="text-gray-600">Unable to load produce data. Please try again.</p>
+              <h2 className="text-xl font-semibold text-red-600 mb-2">{t('error')}</h2>
+              <p className="text-gray-600">{t('errorMessage')}</p>
               <Button onClick={handleBack} className="mt-4">
-                Go Back
+                {t('goBack')}
               </Button>
             </div>
           </CardContent>
@@ -97,7 +99,7 @@ export default function RetailerSuccessPage() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-purple-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-purple-600">🎉 Complete Journey - Ready for Consumers!</p>
+          <p className="text-lg text-purple-600">{t('title')}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -105,9 +107,9 @@ export default function RetailerSuccessPage() {
           <div className="lg:col-span-1">
             <Card className="shadow-lg sticky top-4">
               <CardHeader className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-                <CardTitle className="text-xl">🎯 Final Journey QR Code</CardTitle>
+                                <CardTitle className="text-xl">{t('finalJourneyQRCode')}</CardTitle>
                 <CardDescription className="text-purple-100">
-                  Complete supply chain data in one scan
+                  {t('finalJourneyQRCodeDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
@@ -124,9 +126,9 @@ export default function RetailerSuccessPage() {
             {/* Product Summary */}
             <Card className="shadow-lg">
               <CardHeader className="bg-purple-600 text-white">
-                <CardTitle className="text-2xl">✅ Produce Journey Complete</CardTitle>
+                <CardTitle className="text-2xl">{t('produceJourneyComplete')}</CardTitle>
                 <CardDescription className="text-purple-100">
-                  The produce has successfully traveled through the entire supply chain
+                  {t('produceJourneyCompleteDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">

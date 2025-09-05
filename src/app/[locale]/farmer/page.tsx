@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import LiveQRCode from '@/components/LiveQRCode';
+import { useTranslations } from 'next-intl';
 
 interface ProduceFormData {
   produceId: string;
@@ -25,6 +26,7 @@ interface ProduceFormData {
 export default function FarmerPage() {
   const router = useRouter();
   const { toast } = useToast();
+  const t = useTranslations('Farmer');
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<ProduceFormData>({
     produceId: '',
@@ -57,8 +59,8 @@ export default function FarmerPage() {
 
       if (data.success) {
         toast({
-          title: "Success",
-          description: "Produce registered successfully! QR code generated.",
+          title: t('success'),
+          description: t('successMessage'),
         });
 
         // Store QR code in localStorage for display
@@ -69,15 +71,15 @@ export default function FarmerPage() {
         router.push('/farmer/success');
       } else {
         toast({
-          title: "Error",
-          description: data.error || "Failed to register produce",
+          title: t('error'),
+          description: data.error || t('errorMessage'),
           variant: "destructive",
         });
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to register produce",
+        title: t('error'),
+        description: t('errorMessage'),
         variant: "destructive",
       });
     } finally {
@@ -96,27 +98,27 @@ export default function FarmerPage() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 p-4">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-green-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-green-600">Farmer Portal - Register Your Produce</p>
+          <h1 className="text-4xl font-bold text-green-800 mb-2">{t('title')}</h1>
+          <p className="text-lg text-green-600">{t('register')}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <Card className="shadow-lg">
               <CardHeader className="bg-green-600 text-white">
-                <CardTitle className="text-2xl">Register New Produce</CardTitle>
+                <CardTitle className="text-2xl">{t('register')}</CardTitle>
                 <CardDescription className="text-green-100">
-                  Enter the details of your produce to register it on the blockchain
+                  {t('registerDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="produceId">Produce ID</Label>
+                      <Label htmlFor="produceId">{t('produceId')}</Label>
                       <Input
                         id="produceId"
-                        placeholder="e.g., GRAIN-2024-001"
+                        placeholder={t('produceIdPlaceholder')}
                         value={formData.produceId}
                         onChange={(e) => handleChange('produceId', e.target.value)}
                         required
@@ -124,10 +126,10 @@ export default function FarmerPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="farmerName">Farmer Name</Label>
+                      <Label htmlFor="farmerName">{t('farmerName')}</Label>
                       <Input
                         id="farmerName"
-                        placeholder="Your full name"
+                        placeholder={t('farmerNamePlaceholder')}
                         value={formData.farmerName}
                         onChange={(e) => handleChange('farmerName', e.target.value)}
                         required
@@ -135,28 +137,28 @@ export default function FarmerPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="produceType">Produce Type</Label>
+                      <Label htmlFor="produceType">{t('produceType')}</Label>
                       <Select value={formData.produceType} onValueChange={(value) => handleChange('produceType', value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select produce type" />
+                          <SelectValue placeholder={t('selectProduceType')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="wheat">Wheat</SelectItem>
-                          <SelectItem value="rice">Rice</SelectItem>
-                          <SelectItem value="corn">Corn</SelectItem>
-                          <SelectItem value="soybeans">Soybeans</SelectItem>
-                          <SelectItem value="barley">Barley</SelectItem>
-                          <SelectItem value="oats">Oats</SelectItem>
+                          <SelectItem value="wheat">{t('wheat')}</SelectItem>
+                          <SelectItem value="rice">{t('rice')}</SelectItem>
+                          <SelectItem value="corn">{t('corn')}</SelectItem>
+                          <SelectItem value="soybeans">{t('soybeans')}</SelectItem>
+                          <SelectItem value="barley">{t('barley')}</SelectItem>
+                          <SelectItem value="oats">{t('oats')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="quantity">Quantity</Label>
+                      <Label htmlFor="quantity">{t('quantity')}</Label>
                       <Input
                         id="quantity"
                         type="number"
-                        placeholder="e.g., 100"
+                        placeholder={t('quantityPlaceholder')}
                         value={formData.quantity}
                         onChange={(e) => handleChange('quantity', e.target.value)}
                         required
@@ -164,22 +166,22 @@ export default function FarmerPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="unit">Unit</Label>
+                      <Label htmlFor="unit">{t('unit')}</Label>
                       <Select value={formData.unit} onValueChange={(value) => handleChange('unit', value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select unit" />
+                          <SelectValue placeholder={t('selectUnit')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="kg">Kilograms (kg)</SelectItem>
-                          <SelectItem value="tons">Tons</SelectItem>
-                          <SelectItem value="bushels">Bushels</SelectItem>
-                          <SelectItem value="pounds">Pounds (lbs)</SelectItem>
+                          <SelectItem value="kg">{t('kg')}</SelectItem>
+                          <SelectItem value="tons">{t('tons')}</SelectItem>
+                          <SelectItem value="bushels">{t('bushels')}</SelectItem>
+                          <SelectItem value="pounds">{t('pounds')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="harvestDate">Harvest Date</Label>
+                      <Label htmlFor="harvestDate">{t('harvestDate')}</Label>
                       <Input
                         id="harvestDate"
                         type="date"
@@ -191,10 +193,10 @@ export default function FarmerPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="origin">Origin/Farm Location</Label>
+                    <Label htmlFor="origin">{t('origin')}</Label>
                     <Textarea
                       id="origin"
-                      placeholder="Farm address or location"
+                      placeholder={t('originPlaceholder')}
                       value={formData.origin}
                       onChange={(e) => handleChange('origin', e.target.value)}
                       required
@@ -202,10 +204,10 @@ export default function FarmerPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="walletAddress">Wallet Address</Label>
+                    <Label htmlFor="walletAddress">{t('walletAddress')}</Label>
                     <Input
                       id="walletAddress"
-                      placeholder="0x..."
+                      placeholder={t('walletAddressPlaceholder')}
                       value={formData.walletAddress}
                       onChange={(e) => handleChange('walletAddress', e.target.value)}
                       required
@@ -217,7 +219,7 @@ export default function FarmerPage() {
                     className="w-full bg-green-600 hover:bg-green-700"
                     disabled={isLoading}
                   >
-                    {isLoading ? 'Registering...' : 'Register Produce'}
+                    {isLoading ? t('registering') : t('registerProduce')}
                   </Button>
                 </form>
               </CardContent>
@@ -227,9 +229,9 @@ export default function FarmerPage() {
           <div className="lg:col-span-1">
             <Card className="shadow-lg sticky top-4">
               <CardHeader className="bg-green-100">
-                <CardTitle className="text-lg">Live QR Code Preview</CardTitle>
+                <CardTitle className="text-lg">{t('liveQRCode')}</CardTitle>
                 <CardDescription className="text-green-700">
-                  QR code updates in real-time as you fill the form
+                  {t('liveQRCodeDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
@@ -243,17 +245,17 @@ export default function FarmerPage() {
 
                 <div className="mt-6 space-y-3">
                   <div className="text-sm">
-                    <span className="font-medium text-green-700">Produce ID:</span>
-                    <span className="ml-2 text-gray-600">{formData.produceId || 'Not set'}</span>
+                    <span className="font-medium text-green-700">{t('produceIdLabel')}</span>
+                    <span className="ml-2 text-gray-600">{formData.produceId || t('notSet')}</span>
                   </div>
                   <div className="text-sm">
-                    <span className="font-medium text-green-700">Type:</span>
-                    <span className="ml-2 text-gray-600">{formData.produceType || 'Not set'}</span>
+                    <span className="font-medium text-green-700">{t('typeLabel')}</span>
+                    <span className="ml-2 text-gray-600">{formData.produceType || t('notSet')}</span>
                   </div>
                   <div className="text-sm">
-                    <span className="font-medium text-green-700">Quantity:</span>
+                    <span className="font-medium text-green-700">{t('quantityLabel')}</span>
                     <span className="ml-2 text-gray-600">
-                      {formData.quantity && formData.unit ? `${formData.quantity} ${formData.unit}` : 'Not set'}
+                      {formData.quantity && formData.unit ? `${formData.quantity} ${formData.unit}` : t('notSet')}
                     </span>
                   </div>
                 </div>

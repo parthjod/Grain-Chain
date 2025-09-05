@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslations } from 'next-intl';
 
 interface DistributorFormData {
   produceId: string;
@@ -20,6 +21,7 @@ interface DistributorFormData {
 }
 
 export default function DistributorPage() {
+  const t = useTranslations('Distributor');
   const router = useRouter();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -52,22 +54,22 @@ export default function DistributorPage() {
 
       if (data.success) {
         toast({
-          title: "Success",
-          description: "Produce status updated successfully!",
+          title: t('success'),
+          description: t('successMessage'),
         });
 
         router.push('/distributor/success');
       } else {
         toast({
-          title: "Error",
-          description: data.error || "Failed to update produce status",
+          title: t('error'),
+          description: data.error || t('errorMessage'),
           variant: "destructive",
         });
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to update produce status",
+        title: t('error'),
+        description: t('errorMessage'),
         variant: "destructive",
       });
     } finally {
@@ -87,24 +89,24 @@ export default function DistributorPage() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-blue-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-blue-600">Distributor Portal - Update Logistics</p>
+          <p className="text-lg text-blue-600">{t('title')}</p>
         </div>
 
         <Card className="shadow-lg">
           <CardHeader className="bg-blue-600 text-white">
-            <CardTitle className="text-2xl">Update Produce Status</CardTitle>
+            <CardTitle className="text-2xl">{t('updateStatus')}</CardTitle>
             <CardDescription className="text-blue-100">
-              Update the logistics status and location of produce in transit
+              {t('updateStatusDescription')}
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="produceId">Produce ID</Label>
+                  <Label htmlFor="produceId">{t('produceId')}</Label>
                   <Input
                     id="produceId"
-                    placeholder="e.g., GRAIN-2024-001"
+                    placeholder={t('produceIdPlaceholder')}
                     value={formData.produceId}
                     onChange={(e) => handleChange('produceId', e.target.value)}
                     required
@@ -112,10 +114,10 @@ export default function DistributorPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="distributorName">Distributor Name</Label>
+                  <Label htmlFor="distributorName">{t('distributorName')}</Label>
                   <Input
                     id="distributorName"
-                    placeholder="Your company name"
+                    placeholder={t('distributorNamePlaceholder')}
                     value={formData.distributorName}
                     onChange={(e) => handleChange('distributorName', e.target.value)}
                     required
@@ -123,26 +125,26 @@ export default function DistributorPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="status">Current Status</Label>
+                  <Label htmlFor="status">{t('currentStatus')}</Label>
                   <Select value={formData.status} onValueChange={(value) => handleChange('status', value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select current status" />
+                      <SelectValue placeholder={t('selectCurrentStatus')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="In Transit">In Transit</SelectItem>
-                      <SelectItem value="At Warehouse">At Warehouse</SelectItem>
-                      <SelectItem value="Out for Delivery">Out for Delivery</SelectItem>
-                      <SelectItem value="Delayed">Delayed</SelectItem>
-                      <SelectItem value="Customs Clearance">Customs Clearance</SelectItem>
+                      <SelectItem value="In Transit">{t('inTransit')}</SelectItem>
+                      <SelectItem value="At Warehouse">{t('atWarehouse')}</SelectItem>
+                      <SelectItem value="Out for Delivery">{t('outForDelivery')}</SelectItem>
+                      <SelectItem value="Delayed">{t('delayed')}</SelectItem>
+                      <SelectItem value="Customs Clearance">{t('customsClearance')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="walletAddress">Wallet Address</Label>
+                  <Label htmlFor="walletAddress">{t('walletAddress')}</Label>
                   <Input
                     id="walletAddress"
-                    placeholder="0x..."
+                    placeholder={t('walletAddressPlaceholder')}
                     value={formData.walletAddress}
                     onChange={(e) => handleChange('walletAddress', e.target.value)}
                     required
@@ -151,10 +153,10 @@ export default function DistributorPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="location">Current Location</Label>
+                <Label htmlFor="location">{t('currentLocation')}</Label>
                 <Textarea
                   id="location"
-                  placeholder="Current location or facility address"
+                  placeholder={t('currentLocationPlaceholder')}
                   value={formData.location}
                   onChange={(e) => handleChange('location', e.target.value)}
                   required
@@ -162,10 +164,10 @@ export default function DistributorPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="notes">Additional Notes</Label>
+                <Label htmlFor="notes">{t('additionalNotes')}</Label>
                 <Textarea
                   id="notes"
-                  placeholder="Any additional information about the shipment"
+                  placeholder={t('additionalNotesPlaceholder')}
                   value={formData.notes}
                   onChange={(e) => handleChange('notes', e.target.value)}
                   rows={3}
@@ -177,7 +179,7 @@ export default function DistributorPage() {
                 className="w-full bg-blue-600 hover:bg-blue-700"
                 disabled={isLoading}
               >
-                {isLoading ? 'Updating...' : 'Update Status'}
+                {isLoading ? t('updating') : t('update')}
               </Button>
             </form>
           </CardContent>
@@ -186,25 +188,25 @@ export default function DistributorPage() {
         <div className="mt-8">
           <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-lg">Quick Status Reference</CardTitle>
+              <CardTitle className="text-lg">{t('quickStatusReference')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <h4 className="font-semibold text-blue-600">In Transit</h4>
-                  <p className="text-gray-600">Produce is being transported</p>
+                  <h4 className="font-semibold text-blue-600">{t('inTransit')}</h4>
+                  <p className="text-gray-600">{t('inTransitDescription')}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-blue-600">At Warehouse</h4>
-                  <p className="text-gray-600">Produce is stored at facility</p>
+                  <h4 className="font-semibold text-blue-600">{t('atWarehouse')}</h4>
+                  <p className="text-gray-600">{t('atWarehouseDescription')}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-blue-600">Out for Delivery</h4>
-                  <p className="text-gray-600">En route to final destination</p>
+                  <h4 className="font-semibold text-blue-600">{t('outForDelivery')}</h4>
+                  <p className="text-gray-600">{t('outForDeliveryDescription')}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-blue-600">Delayed</h4>
-                  <p className="text-gray-600">Shipment is delayed</p>
+                  <h4 className="font-semibold text-blue-600">{t('delayed')}</h4>
+                  <p className="text-gray-600">{t('delayedDescription')}</p>
                 </div>
               </div>
             </CardContent>
