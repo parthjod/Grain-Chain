@@ -198,7 +198,11 @@
     "success": "सफलता",
     "successMessage": "उपज की स्थिति सफलतापूर्वक अपडेट हो गई!",
     "error": "त्रुटि",
-    "errorMessage": "उपज की स्थिति अपडेट करने में विफल"
+    "errorMessage": "उपज की स्थिति अपडेट करने में विफल",
+    "home": "Home",
+    "farmer": "Farmer",
+    "distributor": "Distributor",
+    "retailer": "Retailer"
   },
   "DistributorSuccess": {
     "title": "स्थिति अपडेट सफल!",

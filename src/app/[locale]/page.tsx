@@ -29,10 +29,17 @@ export default function Home() {
         <div className="container">
           <h2>Our Ecosystem</h2>
           <div className="ecosystem-cards">
+<a href="/farmer" style={{ textDecoration: 'none' }}>
             <div className="ecosystem-card farmer">Farmer</div>
+</a>
+<a href="/distributor" style={{ textDecoration: 'none' }}>
             <div className="ecosystem-card distributor">Distributor</div>
-            <div className="ecosystem-card retailer">Retailer</div>
+            </a>
+            <a href="/retailer" style={{ textDecoration: 'none' }}>
+            <div className="ecosystem-card retailer">Retailer</div></a>
+            <a href="/consumer" style={{ textDecoration: 'none' }}>
             <div className="ecosystem-card consumer">Consumer</div>
+            </a>
           </div>
         </div>
       </section>
