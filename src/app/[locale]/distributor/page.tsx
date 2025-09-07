@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from '@/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';
@@ -28,6 +28,11 @@ export default function DistributorPage() {
     notes: '',
     walletAddress: ''
   });
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,7 +105,7 @@ export default function DistributorPage() {
       </nav>
 
       {/* Main content */}
-      <main className="main-container">
+      {isClient && <main className="main-container">
         <div className="page-header">
           <h1>{t('title')}</h1>
           <p>{t('updateStatusDescription')}</p>
@@ -218,7 +223,7 @@ export default function DistributorPage() {
             </div>
           </div>
         </div>
-      </main>
+      </main>}
     </div>
   );
 }

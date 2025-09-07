@@ -198,7 +198,11 @@
     "success": "ସଫଳତା",
     "successMessage": "ଉତ୍ପାଦ ସ୍ଥିତି ସଫଳତାର ସହିତ ଅପଡେଟ୍ ହେଲା!",
     "error": "ତ୍ରୁଟି",
-    "errorMessage": "ଉତ୍ପାଦ ସ୍ଥିତି ଅପଡେଟ୍ କରିବାରେ ବିଫଳ"
+    "errorMessage": "ଉତ୍ପାଦ ସ୍ଥିତି ଅପଡେଟ୍ କରିବାରେ ବିଫଳ",
+    "home": "Home",
+    "farmer": "Farmer",
+    "distributor": "Distributor",
+    "retailer": "Retailer"
   },
   "DistributorSuccess": {
     "title": "ସ୍ଥିତି ଅପଡେଟ୍ ସଫଳ ହେଲା!",

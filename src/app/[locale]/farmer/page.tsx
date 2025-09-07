@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from '@/navigation';
 import LiveQRCode from '@/components/LiveQRCode';
 import { useToast } from '@/hooks/use-toast';
@@ -33,6 +33,11 @@ export default function FarmerPage() {
     harvestDate: '',
     walletAddress: ''
   });
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,13 +106,13 @@ export default function FarmerPage() {
         {/* Header */}
         <div className="page-header">
           <h1>{t('title')}</h1>
-          <button className="register-button">
+          {isClient && <button className="register-button">
             {t('registerProduce')}
-          </button>
+          </button>}
         </div>
 
         {/* Content wrapper */}
-        <div className="content-wrapper">
+        {isClient && <div className="content-wrapper">
           {/* Form card */}
           <div className="form-card">
             <div className="form-header">
@@ -258,7 +263,7 @@ export default function FarmerPage() {
               </div>
             </div>
           </div>
-        </div>
+        </div>}
       </main>
     </div>
   );
