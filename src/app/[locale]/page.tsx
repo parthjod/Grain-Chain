@@ -13,13 +13,10 @@ export default function Home() {
       <section className="hero">
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1>Grain<span>Chain</span></h1>
-          <p>
-            Blockchain-powered supply chain transparency for agricultural products.
-            From seed to shelf, track every step with trust and transparency.
-          </p>
+          <h1>{t.rich('title', { span: (chunks) => <span>{chunks}</span> })}</h1>
+          <p>{t('heroSubtitle')}</p>
           <Link href="/consumer">
-            <button>Enter Consumer Portal</button>
+            <button>{t('heroButton')}</button>
           </Link>
         </div>
       </section>
@@ -27,18 +24,18 @@ export default function Home() {
       {/* Ecosystem */}
       <section className="ecosystem">
         <div className="container">
-          <h2>Our Ecosystem</h2>
+          <h2>{t('ecosystemTitle')}</h2>
           <div className="ecosystem-cards">
 <a href="/farmer" style={{ textDecoration: 'none' }}>
-            <div className="ecosystem-card farmer">Farmer</div>
+            <div className="ecosystem-card farmer">{t('ecosystemFarmer')}</div>
 </a>
 <a href="/distributor" style={{ textDecoration: 'none' }}>
-            <div className="ecosystem-card distributor">Distributor</div>
+            <div className="ecosystem-card distributor">{t('ecosystemDistributor')}</div>
             </a>
             <a href="/retailer" style={{ textDecoration: 'none' }}>
-            <div className="ecosystem-card retailer">Retailer</div></a>
+            <div className="ecosystem-card retailer">{t('ecosystemRetailer')}</div></a>
             <a href="/consumer" style={{ textDecoration: 'none' }}>
-            <div className="ecosystem-card consumer">Consumer</div>
+            <div className="ecosystem-card consumer">{t('ecosystemConsumer')}</div>
             </a>
           </div>
         </div>
@@ -47,23 +44,23 @@ export default function Home() {
       {/* Features */}
       <section className="features">
         <div className="container">
-          <h2>Key Features</h2>
+          <h2>{t('featuresTitle')}</h2>
           <div className="feature-grid">
             <div className="feature-card">
-              <h3>Blockchain Security</h3>
-              <p>All data is securely stored on the blockchain, ensuring immutability and trust.</p>
+              <h3>{t('featureBlockchainTitle')}</h3>
+              <p>{t('featureBlockchainDescription')}</p>
             </div>
             <div className="feature-card">
-              <h3>Complete Transparency</h3>
-              <p>Full visibility into every step of the supply chain from farm to table.</p>
+              <h3>{t('featureTransparencyTitle')}</h3>
+              <p>{t('featureTransparencyDescription')}</p>
             </div>
             <div className="feature-card">
-              <h3>Easy QR Scanning</h3>
-              <p>Instant QR code scanning to access product information.</p>
+              <h3>{t('featureScanningTitle')}</h3>
+              <p>{t('featureScanningDescription')}</p>
             </div>
             <div className="feature-card">
-              <h3>Real-time Updates</h3>
-              <p>Live tracking and status updates throughout the supply chain.</p>
+              <h3>{t('featureRealtimeTitle')}</h3>
+              <p>{t('featureRealtimeDescription')}</p>
             </div>
           </div>
         </div>
@@ -72,27 +69,27 @@ export default function Home() {
       {/* How it works */}
       <section className="how-it-works">
         <div className="container">
-          <h2>How It Works</h2>
+          <h2>{t('howItWorksTitle')}</h2>
           <div className="steps">
             <div className="step">
               <div className="step-number step-1">1</div>
-              <h3>Farmer Registration</h3>
-              <p>Farmers register their produce and generate unique QR codes.</p>
+              <h3>{t('stepFarmerTitle')}</h3>
+              <p>{t('stepFarmerDescription')}</p>
             </div>
             <div className="step">
               <div className="step-number step-2">2</div>
-              <h3>Distribution Tracking</h3>
-              <p>Distributors update logistics and track products.</p>
+              <h3>{t('stepDistributorTitle')}</h3>
+              <p>{t('stepDistributorDescription')}</p>
             </div>
             <div className="step">
               <div className="step-number step-3">3</div>
-              <h3>Retail Confirmation</h3>
-              <p>Retailers confirm arrival, assess quality, and set pricing.</p>
+              <h3>{t('stepRetailerTitle')}</h3>
+              <p>{t('stepRetailerDescription')}</p>
             </div>
             <div className="step">
               <div className="step-number step-4">4</div>
-              <h3>Consumer Verification</h3>
-              <p>Consumers scan QR codes to verify authenticity.</p>
+              <h3>{t('stepConsumerTitle')}</h3>
+              <p>{t('stepConsumerDescription')}</p>
             </div>
           </div>
         </div>
@@ -100,7 +97,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer>
-        <p>&copy; {new Date().getFullYear()} GrainChain. All Rights Reserved.</p>
+        <p>{t('footerText', { year: new Date().getFullYear() })}</p>
       </footer>
     </div>
   );
