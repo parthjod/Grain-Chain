@@ -1,8 +1,34 @@
 {
   "Index": {
-    "title": "GrainChain",
+    "title": "Grain<span>Chain</span>",
     "subtitle": "Blockchain-powered supply chain transparency for agricultural products",
     "description": "Track your food from farm to table with complete transparency and security",
+    "heroSubtitle": "Blockchain-powered supply chain transparency for agricultural products. From seed to shelf, track every step with trust and transparency.",
+    "heroButton": "Enter Consumer Portal",
+    "ecosystemTitle": "Our Ecosystem",
+    "ecosystemFarmer": "Farmer",
+    "ecosystemDistributor": "Distributor",
+    "ecosystemRetailer": "Retailer",
+    "ecosystemConsumer": "Consumer",
+    "featuresTitle": "Key Features",
+    "featureBlockchainTitle": "Blockchain Security",
+    "featureBlockchainDescription": "All data is securely stored on the blockchain, ensuring immutability and trust.",
+    "featureTransparencyTitle": "Complete Transparency",
+    "featureTransparencyDescription": "Full visibility into every step of the supply chain from farm to table.",
+    "featureScanningTitle": "Easy QR Scanning",
+    "featureScanningDescription": "Instant QR code scanning to access product information.",
+    "featureRealtimeTitle": "Real-time Updates",
+    "featureRealtimeDescription": "Live tracking and status updates throughout the supply chain.",
+    "howItWorksTitle": "How It Works",
+    "stepFarmerTitle": "Farmer Registration",
+    "stepFarmerDescription": "Farmers register their produce and generate unique QR codes.",
+    "stepDistributorTitle": "Distribution Tracking",
+    "stepDistributorDescription": "Distributors update logistics and track products.",
+    "stepRetailerTitle": "Retail Confirmation",
+    "stepRetailerDescription": "Retailers confirm arrival, assess quality, and set pricing.",
+    "stepConsumerTitle": "Consumer Verification",
+    "stepConsumerDescription": "Consumers scan QR codes to verify authenticity.",
+    "footerText": "© {year} GrainChain. All Rights Reserved.",
     "farmerCard": {
       "title": "🌾 Farmer",
       "description": "Register your produce on the blockchain",
@@ -341,6 +367,8 @@
     "successMessage": "Produce information loaded successfully!",
     "error": "Error",
     "errorMessage": "Produce not found",
-    "grainChain": "GrainChain"
+    "grainChain": "GrainChain",
+    "farmRegistration": "Farm Registration",
+    "registeredBy": "registered by"
   }
 }

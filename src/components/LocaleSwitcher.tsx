@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
+import '../app/styles/localeSwitcher.css'; // ✅ Import CSS
 
 export default function LocaleSwitcher() {
   const router = useRouter();
@@ -23,19 +24,19 @@ export default function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="default" size="icon" className="locale-btn">
           <Globe className="h-[1.2rem] w-[1.2rem]" />
           <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => switchLocale('en')} disabled={locale === 'en'}>
+        <DropdownMenuItem className="locale-dropdown-item" onClick={() => switchLocale('en')} disabled={locale === 'en'}>
           English
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => switchLocale('hi')} disabled={locale === 'hi'}>
+        <DropdownMenuItem className="locale-dropdown-item" onClick={() => switchLocale('hi')} disabled={locale === 'hi'}>
           हिंदी (Hindi)
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => switchLocale('or')} disabled={locale === 'or'}>
+        <DropdownMenuItem className="locale-dropdown-item" onClick={() => switchLocale('or')} disabled={locale === 'or'}>
           ଓଡ଼ିଆ (Odia)
         </DropdownMenuItem>
       </DropdownMenuContent>
