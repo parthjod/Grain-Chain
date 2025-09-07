@@ -1,48 +1,58 @@
 'use client';
 
-import { Link, pathnames } from '@/navigation'; // Use Link from next-intl
-import { usePathname } from 'next/navigation'; // This is fine for getting the path
+import { Link, pathnames } from '@/navigation';
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import LocaleSwitcher from './LocaleSwitcher'; // Import the new switcher
+import LocaleSwitcher from './LocaleSwitcher';
+import '@/app/styles/navbar.css';
+import { useEffect, useState } from 'react';
 
 type AppPathnames = keyof typeof pathnames;
 
-const navigation: { name: string; href: AppPathnames; color: string }[] = [
-  { name: 'Farmer', href: '/farmer', color: 'bg-green-600 hover:bg-green-700' },
-  { name: 'Distributor', href: '/distributor', color: 'bg-blue-600 hover:bg-blue-700' },
-  { name: 'Retailer', href: '/retailer', color: 'bg-purple-600 hover:bg-purple-700' },
-  { name: 'Consumer', href: '/consumer', color: 'bg-orange-600 hover:bg-orange-700' },
+const navigation: { name: string; href: AppPathnames; role: string }[] = [
+  { name: 'Farmer', href: '/farmer', role: 'farmer' },
+  { name: 'Distributor', href: '/distributor', role: 'distributor' },
+  { name: 'Retailer', href: '/retailer', role: 'retailer' },
+  { name: 'Consumer', href: '/consumer', role: 'consumer' },
 ];
 
 export function Navigation() {
   const pathname = usePathname();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block">GrainChain</span>
-          </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={pathname.includes(item.href) ? "text-foreground" : "text-foreground/60"}
-              >
-                {item.name}
+    <header className="navbar">
+      <div className="navbar-container">
+        {/* Logo */}
+        <Link href="/" className="navbar-logo-link">
+          <span className="navbar-logo">GrainChain</span>
+        </Link>
+
+        {/* Role Navigation */}
+        <nav className="navbar-nav">
+          {isClient ? navigation.map((item) => {
+            const isActive = pathname.startsWith(item.href);
+            return (
+              <Link key={item.name} href={item.href}>
+                <Button
+                  className={`navbar-btn navbar-btn-${item.role} ${
+                    isActive ? 'navbar-btn-active' : ''
+                  }`}
+                >
+                  {item.name}
+                </Button>
               </Link>
-            ))}
-          </nav>
-        </div>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            {/* Can add a search bar here if needed */}
-          </div>
-          <nav className="flex items-center">
-            <LocaleSwitcher />
-          </nav>
+            );
+          }) : null}
+        </nav>
+
+        {/* Locale Switcher */}
+        <div className="navbar-locale">
+          <LocaleSwitcher />
         </div>
       </div>
     </header>

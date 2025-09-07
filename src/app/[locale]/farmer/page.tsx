@@ -1,16 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from '@/navigation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useToast } from '@/hooks/use-toast';
 import LiveQRCode from '@/components/LiveQRCode';
+import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';
+import '@/app/styles/farmer.css';
 
 interface ProduceFormData {
   produceId: string;
@@ -63,11 +58,9 @@ export default function FarmerPage() {
           description: t('successMessage'),
         });
 
-        // Store QR code in localStorage for display
         localStorage.setItem('lastQRCode', data.qrCode);
         localStorage.setItem('lastProduceId', formData.produceId);
 
-        // Redirect to a success page or show QR code
         router.push('/farmer/success');
       } else {
         toast({
@@ -95,175 +88,178 @@ export default function FarmerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 p-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-green-800 mb-2">{t('title')}</h1>
-          <p className="text-lg text-green-600">{t('register')}</p>
+    <div>
+      {/* Floating animated leaves */}
+      <div className="bg-decoration">
+        <div className="leaf"></div>
+        <div className="leaf"></div>
+        <div className="leaf"></div>
+        <div className="leaf"></div>
+      </div>
+
+      <main className="main-container">
+        {/* Header */}
+        <div className="page-header">
+          <h1>{t('title')}</h1>
+          <button className="register-button">
+            {t('registerProduce')}
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <Card className="shadow-lg">
-              <CardHeader className="bg-green-600 text-white">
-                <CardTitle className="text-2xl">{t('register')}</CardTitle>
-                <CardDescription className="text-green-100">
-                  {t('registerDescription')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="produceId">{t('produceId')}</Label>
-                      <Input
-                        id="produceId"
-                        placeholder={t('produceIdPlaceholder')}
-                        value={formData.produceId}
-                        onChange={(e) => handleChange('produceId', e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="farmerName">{t('farmerName')}</Label>
-                      <Input
-                        id="farmerName"
-                        placeholder={t('farmerNamePlaceholder')}
-                        value={formData.farmerName}
-                        onChange={(e) => handleChange('farmerName', e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="produceType">{t('produceType')}</Label>
-                      <Select value={formData.produceType} onValueChange={(value) => handleChange('produceType', value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder={t('selectProduceType')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="wheat">{t('wheat')}</SelectItem>
-                          <SelectItem value="rice">{t('rice')}</SelectItem>
-                          <SelectItem value="corn">{t('corn')}</SelectItem>
-                          <SelectItem value="soybeans">{t('soybeans')}</SelectItem>
-                          <SelectItem value="barley">{t('barley')}</SelectItem>
-                          <SelectItem value="oats">{t('oats')}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="quantity">{t('quantity')}</Label>
-                      <Input
-                        id="quantity"
-                        type="number"
-                        placeholder={t('quantityPlaceholder')}
-                        value={formData.quantity}
-                        onChange={(e) => handleChange('quantity', e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="unit">{t('unit')}</Label>
-                      <Select value={formData.unit} onValueChange={(value) => handleChange('unit', value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder={t('selectUnit')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="kg">{t('kg')}</SelectItem>
-                          <SelectItem value="tons">{t('tons')}</SelectItem>
-                          <SelectItem value="bushels">{t('bushels')}</SelectItem>
-                          <SelectItem value="pounds">{t('pounds')}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="harvestDate">{t('harvestDate')}</Label>
-                      <Input
-                        id="harvestDate"
-                        type="date"
-                        value={formData.harvestDate}
-                        onChange={(e) => handleChange('harvestDate', e.target.value)}
-                        required
-                      />
-                    </div>
+        {/* Content wrapper */}
+        <div className="content-wrapper">
+          {/* Form card */}
+          <div className="form-card">
+            <div className="form-header">
+              <h2>{t('register')}</h2>
+              <p>{t('registerDescription')}</p>
+            </div>
+            <div className="form-body">
+              <form onSubmit={handleSubmit}>
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label htmlFor="produceId">{t('produceId')}</label>
+                    <input
+                      type="text"
+                      id="produceId"
+                      value={formData.produceId}
+                      onChange={(e) => handleChange('produceId', e.target.value)}
+                      placeholder={t('produceIdPlaceholder')}
+                      required
+                    />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="origin">{t('origin')}</Label>
-                    <Textarea
+                  <div className="form-group">
+                    <label htmlFor="farmerName">{t('farmerName')}</label>
+                    <input
+                      type="text"
+                      id="farmerName"
+                      value={formData.farmerName}
+                      onChange={(e) => handleChange('farmerName', e.target.value)}
+                      placeholder={t('farmerNamePlaceholder')}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="produceType">{t('produceType')}</label>
+                    <select
+                      id="produceType"
+                      value={formData.produceType}
+                      onChange={(e) => handleChange('produceType', e.target.value)}
+                    >
+                      <option value="">{t('selectProduceType')}</option>
+                      <option value="wheat">{t('wheat')}</option>
+                      <option value="rice">{t('rice')}</option>
+                      <option value="corn">{t('corn')}</option>
+                      <option value="soybeans">{t('soybeans')}</option>
+                      <option value="barley">{t('barley')}</option>
+                      <option value="oats">{t('oats')}</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="quantity">{t('quantity')}</label>
+                    <input
+                      type="number"
+                      id="quantity"
+                      value={formData.quantity}
+                      onChange={(e) => handleChange('quantity', e.target.value)}
+                      placeholder={t('quantityPlaceholder')}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="unit">{t('unit')}</label>
+                    <select
+                      id="unit"
+                      value={formData.unit}
+                      onChange={(e) => handleChange('unit', e.target.value)}
+                    >
+                      <option value="">{t('selectUnit')}</option>
+                      <option value="kg">{t('kg')}</option>
+                      <option value="tons">{t('tons')}</option>
+                      <option value="bushels">{t('bushels')}</option>
+                      <option value="pounds">{t('pounds')}</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="harvestDate">{t('harvestDate')}</label>
+                    <input
+                      type="date"
+                      id="harvestDate"
+                      value={formData.harvestDate}
+                      onChange={(e) => handleChange('harvestDate', e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group full-width">
+                    <label htmlFor="origin">{t('origin')}</label>
+                    <textarea
                       id="origin"
-                      placeholder={t('originPlaceholder')}
                       value={formData.origin}
                       onChange={(e) => handleChange('origin', e.target.value)}
+                      placeholder={t('originPlaceholder')}
                       required
-                    />
+                    ></textarea>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="walletAddress">{t('walletAddress')}</Label>
-                    <Input
+                  <div className="form-group full-width">
+                    <label htmlFor="walletAddress">{t('walletAddress')}</label>
+                    <input
+                      type="text"
                       id="walletAddress"
-                      placeholder={t('walletAddressPlaceholder')}
                       value={formData.walletAddress}
                       onChange={(e) => handleChange('walletAddress', e.target.value)}
+                      placeholder={t('walletAddressPlaceholder')}
                       required
                     />
                   </div>
+                </div>
 
-                  <Button
-                    type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700"
-                    disabled={isLoading}
-                  >
-                    {isLoading ? t('registering') : t('registerProduce')}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                <button type="submit" className="submit-button" disabled={isLoading}>
+                  {isLoading ? t('registering') : t('registerProduce')}
+                </button>
+              </form>
+            </div>
           </div>
 
-          <div className="lg:col-span-1">
-            <Card className="shadow-lg sticky top-4">
-              <CardHeader className="bg-green-100">
-                <CardTitle className="text-lg">{t('liveQRCode')}</CardTitle>
-                <CardDescription className="text-green-700">
-                  {t('liveQRCodeDescription')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6">
-                <LiveQRCode
-                  produceId={formData.produceId}
-                  farmer={formData.walletAddress}
-                  produceType={formData.produceType}
-                  origin={formData.origin}
-                  harvestDate={formData.harvestDate}
-                />
+          {/* QR Preview card */}
+          <div className="qr-preview">
+            <h3>{t('liveQRCode')}</h3>
+            <p>{t('liveQRCodeDescription')}</p>
+            <div className="qr-placeholder">
+              <LiveQRCode
+                produceId={formData.produceId}
+                farmer={formData.walletAddress}
+                produceType={formData.produceType}
+                origin={formData.origin}
+                harvestDate={formData.harvestDate}
+              />
+            </div>
 
-                <div className="mt-6 space-y-3">
-                  <div className="text-sm">
-                    <span className="font-medium text-green-700">{t('produceIdLabel')}</span>
-                    <span className="ml-2 text-gray-600">{formData.produceId || t('notSet')}</span>
-                  </div>
-                  <div className="text-sm">
-                    <span className="font-medium text-green-700">{t('typeLabel')}</span>
-                    <span className="ml-2 text-gray-600">{formData.produceType || t('notSet')}</span>
-                  </div>
-                  <div className="text-sm">
-                    <span className="font-medium text-green-700">{t('quantityLabel')}</span>
-                    <span className="ml-2 text-gray-600">
-                      {formData.quantity && formData.unit ? `${formData.quantity} ${formData.unit}` : t('notSet')}
-                    </span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="preview-details">
+              <div className="preview-item">
+                <span className="preview-label">{t('produceIdLabel')}</span>
+                <span className="preview-value">{formData.produceId || t('notSet')}</span>
+              </div>
+              <div className="preview-item">
+                <span className="preview-label">{t('typeLabel')}</span>
+                <span className="preview-value">{formData.produceType || t('notSet')}</span>
+              </div>
+              <div className="preview-item">
+                <span className="preview-label">{t('quantityLabel')}</span>
+                <span className="preview-value">
+                  {formData.quantity && formData.unit ? `${formData.quantity} ${formData.unit}` : t('notSet')}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

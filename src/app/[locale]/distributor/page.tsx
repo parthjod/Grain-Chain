@@ -2,14 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from '@/navigation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';
+import '@/app/styles/distributor.css';
 
 interface DistributorFormData {
   produceId: string;
@@ -41,12 +36,10 @@ export default function DistributorPage() {
     try {
       const response = await fetch('/api/produce/update', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          distributor: formData.walletAddress
+          distributor: formData.walletAddress,
         }),
       });
 
@@ -57,20 +50,19 @@ export default function DistributorPage() {
           title: t('success'),
           description: t('successMessage'),
         });
-
         router.push('/distributor/success');
       } else {
         toast({
           title: t('error'),
           description: data.error || t('errorMessage'),
-          variant: "destructive",
+          variant: 'destructive',
         });
       }
     } catch (error) {
       toast({
         title: t('error'),
         description: t('errorMessage'),
-        variant: "destructive",
+        variant: 'destructive',
       });
     } finally {
       setIsLoading(false);
@@ -78,141 +70,155 @@ export default function DistributorPage() {
   };
 
   const handleChange = (field: keyof DistributorFormData, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-blue-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-blue-600">{t('title')}</p>
+    <div>
+      {/* Floating background particles */}
+      <div className="particles">
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+      </div>
+
+      {/* Navigation */}
+      <nav>
+        <div className="nav-container">
+          <div className="logo">GrainChain</div>
+          <div className="nav-links">
+            <a href="/">{t('home')}</a>
+            <a href="/farmer">{t('farmer')}</a>
+            <a href="/distributor">{t('distributor')}</a>
+            <a href="/retailer">{t('retailer')}</a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main content */}
+      <main className="main-container">
+        <div className="page-header">
+          <h1>{t('title')}</h1>
+          <p>{t('updateStatusDescription')}</p>
         </div>
 
-        <Card className="shadow-lg">
-          <CardHeader className="bg-blue-600 text-white">
-            <CardTitle className="text-2xl">{t('updateStatus')}</CardTitle>
-            <CardDescription className="text-blue-100">
-              {t('updateStatusDescription')}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="p-6">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="produceId">{t('produceId')}</Label>
-                  <Input
-                    id="produceId"
-                    placeholder={t('produceIdPlaceholder')}
-                    value={formData.produceId}
-                    onChange={(e) => handleChange('produceId', e.target.value)}
-                    required
-                  />
-                </div>
+        <div className="form-card">
+          <div className="form-header">
+            <h2>{t('updateStatus')}</h2>
+          </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="distributorName">{t('distributorName')}</Label>
-                  <Input
-                    id="distributorName"
-                    placeholder={t('distributorNamePlaceholder')}
-                    value={formData.distributorName}
-                    onChange={(e) => handleChange('distributorName', e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="status">{t('currentStatus')}</Label>
-                  <Select value={formData.status} onValueChange={(value) => handleChange('status', value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder={t('selectCurrentStatus')} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="In Transit">{t('inTransit')}</SelectItem>
-                      <SelectItem value="At Warehouse">{t('atWarehouse')}</SelectItem>
-                      <SelectItem value="Out for Delivery">{t('outForDelivery')}</SelectItem>
-                      <SelectItem value="Delayed">{t('delayed')}</SelectItem>
-                      <SelectItem value="Customs Clearance">{t('customsClearance')}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="walletAddress">{t('walletAddress')}</Label>
-                  <Input
-                    id="walletAddress"
-                    placeholder={t('walletAddressPlaceholder')}
-                    value={formData.walletAddress}
-                    onChange={(e) => handleChange('walletAddress', e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="location">{t('currentLocation')}</Label>
-                <Textarea
-                  id="location"
-                  placeholder={t('currentLocationPlaceholder')}
-                  value={formData.location}
-                  onChange={(e) => handleChange('location', e.target.value)}
+          <form onSubmit={handleSubmit} className="form-body">
+            <div className="form-grid">
+              <div className="form-group">
+                <label htmlFor="produceId">{t('produceId')}</label>
+                <input
+                  type="text"
+                  id="produceId"
+                  value={formData.produceId}
+                  onChange={(e) => handleChange('produceId', e.target.value)}
+                  placeholder={t('produceIdPlaceholder')}
                   required
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="notes">{t('additionalNotes')}</Label>
-                <Textarea
-                  id="notes"
-                  placeholder={t('additionalNotesPlaceholder')}
-                  value={formData.notes}
-                  onChange={(e) => handleChange('notes', e.target.value)}
-                  rows={3}
+              <div className="form-group">
+                <label htmlFor="distributorName">{t('distributorName')}</label>
+                <input
+                  type="text"
+                  id="distributorName"
+                  value={formData.distributorName}
+                  onChange={(e) => handleChange('distributorName', e.target.value)}
+                  placeholder={t('distributorNamePlaceholder')}
+                  required
                 />
               </div>
 
-              <Button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700"
-                disabled={isLoading}
-              >
-                {isLoading ? t('updating') : t('update')}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-
-        <div className="mt-8">
-          <Card className="shadow-md">
-            <CardHeader>
-              <CardTitle className="text-lg">{t('quickStatusReference')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div>
-                  <h4 className="font-semibold text-blue-600">{t('inTransit')}</h4>
-                  <p className="text-gray-600">{t('inTransitDescription')}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-blue-600">{t('atWarehouse')}</h4>
-                  <p className="text-gray-600">{t('atWarehouseDescription')}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-blue-600">{t('outForDelivery')}</h4>
-                  <p className="text-gray-600">{t('outForDeliveryDescription')}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-blue-600">{t('delayed')}</h4>
-                  <p className="text-gray-600">{t('delayedDescription')}</p>
-                </div>
+              <div className="form-group">
+                <label htmlFor="status">{t('currentStatus')}</label>
+                <select
+                  id="status"
+                  value={formData.status}
+                  onChange={(e) => handleChange('status', e.target.value)}
+                >
+                  <option value="">{t('selectCurrentStatus')}</option>
+                  <option value="In Transit">{t('inTransit')}</option>
+                  <option value="At Warehouse">{t('atWarehouse')}</option>
+                  <option value="Out for Delivery">{t('outForDelivery')}</option>
+                  <option value="Delayed">{t('delayed')}</option>
+                  <option value="Customs Clearance">{t('customsClearance')}</option>
+                </select>
               </div>
-            </CardContent>
-          </Card>
+
+              <div className="form-group">
+                <label htmlFor="walletAddress">{t('walletAddress')}</label>
+                <input
+                  type="text"
+                  id="walletAddress"
+                  value={formData.walletAddress}
+                  onChange={(e) => handleChange('walletAddress', e.target.value)}
+                  placeholder={t('walletAddressPlaceholder')}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-group full-width">
+              <label htmlFor="location">{t('currentLocation')}</label>
+              <textarea
+                id="location"
+                value={formData.location}
+                onChange={(e) => handleChange('location', e.target.value)}
+                placeholder={t('currentLocationPlaceholder')}
+                required
+              ></textarea>
+            </div>
+
+            <div className="form-group full-width">
+              <label htmlFor="notes">{t('additionalNotes')}</label>
+              <textarea
+                id="notes"
+                value={formData.notes}
+                onChange={(e) => handleChange('notes', e.target.value)}
+                placeholder={t('additionalNotesPlaceholder')}
+                rows={3}
+              ></textarea>
+            </div>
+
+            <button type="submit" className="submit-button" disabled={isLoading}>
+              {isLoading ? t('updating') : t('update')}
+            </button>
+          </form>
         </div>
-      </div>
+
+        {/* Quick Status Reference */}
+        <div className="form-card" style={{ marginTop: '2rem' }}>
+          <div className="form-header">
+            <h2>{t('quickStatusReference')}</h2>
+          </div>
+          <div className="reference-grid">
+            <div>
+              <h4 className="ref-title">{t('inTransit')}</h4>
+              <p>{t('inTransitDescription')}</p>
+            </div>
+            <div>
+              <h4 className="ref-title">{t('atWarehouse')}</h4>
+              <p>{t('atWarehouseDescription')}</p>
+            </div>
+            <div>
+              <h4 className="ref-title">{t('outForDelivery')}</h4>
+              <p>{t('outForDeliveryDescription')}</p>
+            </div>
+            <div>
+              <h4 className="ref-title">{t('delayed')}</h4>
+              <p>{t('delayedDescription')}</p>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
