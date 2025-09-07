@@ -198,7 +198,11 @@
     "success": "Success",
     "successMessage": "Produce status updated successfully!",
     "error": "Error",
-    "errorMessage": "Failed to update produce status"
+    "errorMessage": "Failed to update produce status",
+    "home": "Home",
+    "farmer": "Farmer",
+    "distributor": "Distributor",
+    "retailer": "Retailer"
   },
   "DistributorSuccess": {
     "title": "Status Update Successful!",
