@@ -2,12 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import FinalJourneyQR from '@/components/FinalJourneyQR';
 import { useTranslations } from 'next-intl';
+import '@/app/styles/retailerSuccess.css';
 
 interface CompleteProduceData {
   produceId: string;
@@ -40,12 +37,10 @@ export default function RetailerSuccessPage() {
   useEffect(() => {
     const fetchCompleteProduceData = async () => {
       try {
-        // Get the last produce ID from localStorage or use a default
         const lastProduceId = localStorage.getItem('lastProduceId') || 'WORKFLOW-TEST-001';
-        
         const response = await fetch(`/api/produce/${lastProduceId}`);
         const data = await response.json();
-        
+
         if (data.success) {
           setProduceData(data.produce);
         } else {
@@ -67,7 +62,7 @@ export default function RetailerSuccessPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 p-4 flex items-center justify-center">
+      <div className="retailer-success-container flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
           <p className="text-purple-600">{t('loading')}</p>
@@ -78,193 +73,160 @@ export default function RetailerSuccessPage() {
 
   if (!produceData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 p-4 flex items-center justify-center">
-        <Card className="shadow-lg max-w-md">
-          <CardContent className="p-6">
-            <div className="text-center">
-              <h2 className="text-xl font-semibold text-red-600 mb-2">{t('error')}</h2>
-              <p className="text-gray-600">{t('errorMessage')}</p>
-              <Button onClick={handleBack} className="mt-4">
-                {t('goBack')}
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="retailer-success-container flex items-center justify-center">
+        <div className="retailer-card max-w-md">
+          <div className="retailer-card-body text-center">
+            <h2 className="text-xl font-semibold text-red-600 mb-2">{t('error')}</h2>
+            <p className="text-gray-600">{t('errorMessage')}</p>
+            <button onClick={handleBack} className="primary-btn mt-4">
+              {t('goBack')}
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 p-4">
+    <div className="retailer-success-container">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-purple-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-purple-600">{t('title')}</p>
+        {/* Header */}
+        <div className="retailer-success-header">
+          <h1 style={{marginTop:"50px"}}>GrainChain</h1>
+          <p>{t('title')}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Final QR Code */}
           <div className="lg:col-span-1">
-            <Card className="shadow-lg sticky top-4">
-              <CardHeader className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-                                <CardTitle className="text-xl">{t('finalJourneyQRCode')}</CardTitle>
-                <CardDescription className="text-purple-100">
-                  {t('finalJourneyQRCodeDescription')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6">
-                <FinalJourneyQR 
+            <div className="retailer-card sticky top-4">
+              <div className="retailer-card-header">
+                <h2>{t('finalJourneyQRCode')}</h2>
+                <p>{t('finalJourneyQRCodeDescription')}</p>
+              </div>
+              <div className="retailer-card-body text-center">
+                <FinalJourneyQR
                   produceId={produceData.produceId}
                   produceData={produceData}
                 />
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
           {/* Right Column - Journey Details */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Product Summary */}
-            <Card className="shadow-lg">
-              <CardHeader className="bg-purple-600 text-white">
-                <CardTitle className="text-2xl">{t('produceJourneyComplete')}</CardTitle>
-                <CardDescription className="text-purple-100">
-                  {t('produceJourneyCompleteDescription')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="text-center">
-                      <Badge variant="secondary" className="text-lg px-4 py-2 mb-4">
-                        🆔 {produceData.produceId}
-                      </Badge>
+            <div className="retailer-card">
+              <div className="retailer-card-header">
+                <h2>{t('produceJourneyComplete')}</h2>
+                <p>{t('produceJourneyCompleteDescription')}</p>
+              </div>
+              <div className="retailer-card-body">
+                <div className="retailer-info-grid">
+                  {/* Left Info */}
+                  <div>
+                    <div className="text-center mb-4">
+                      <span className="retailer-badge">🆔 {produceData.produceId}</span>
                     </div>
-
                     <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">🌾 Product:</span>
-                        <Badge className="bg-green-100 text-green-800">
-                          {produceData.produceType}
-                        </Badge>
+                      <div className="flex justify-between">
+                        <span className="retailer-info-label">🌾 Product:</span>
+                        <span className="retailer-info-value">{produceData.produceType}</span>
                       </div>
-                      
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">📏 Quantity:</span>
-                        <span className="font-semibold">{produceData.quantity} {produceData.unit}</span>
+                      <div className="flex justify-between">
+                        <span className="retailer-info-label">📏 Quantity:</span>
+                        <span className="retailer-info-value">
+                          {produceData.quantity} {produceData.unit}
+                        </span>
                       </div>
-                      
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">👨‍🌾 Farmer:</span>
-                        <span className="text-sm">{produceData.farmerName}</span>
+                      <div className="flex justify-between">
+                        <span className="retailer-info-label">👨‍🌾 Farmer:</span>
+                        <span className="retailer-info-value">{produceData.farmerName}</span>
                       </div>
-                      
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">📍 Origin:</span>
-                        <span className="text-sm">{produceData.origin}</span>
+                      <div className="flex justify-between">
+                        <span className="retailer-info-label">📍 Origin:</span>
+                        <span className="retailer-info-value">{produceData.origin}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">💰 Price:</span>
-                        {produceData.price ? (
-                          <Badge className="bg-green-100 text-green-800 text-lg px-3 py-1">
-                            ${produceData.price}
-                          </Badge>
-                        ) : (
-                          <span className="text-gray-500">Not set</span>
-                        )}
-                      </div>
-                      
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">📊 Status:</span>
-                        <Badge className="bg-blue-100 text-blue-800">
-                          {produceData.status}
-                        </Badge>
-                      </div>
-                      
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">✅ Sold:</span>
-                        <Badge className={produceData.isSold ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}>
-                          {produceData.isSold ? "Yes" : "No"}
-                        </Badge>
-                      </div>
-                      
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">🏪 Current Holder:</span>
-                        <span className="text-sm">{produceData.currentHolder}</span>
-                      </div>
+                  {/* Right Info */}
+                  <div className="space-y-3">
+                    <div className="flex justify-between">
+                      <span className="retailer-info-label">💰 Price:</span>
+                      {produceData.price ? (
+                        <span className="retailer-badge">${produceData.price}</span>
+                      ) : (
+                        <span className="retailer-info-value">Not set</span>
+                      )}
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="retailer-info-label">📊 Status:</span>
+                      <span className="retailer-badge">{produceData.status}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="retailer-info-label">✅ Sold:</span>
+                      <span className="retailer-badge">
+                        {produceData.isSold ? 'Yes' : 'No'}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="retailer-info-label">🏪 Current Holder:</span>
+                      <span className="retailer-info-value">{produceData.currentHolder}</span>
                     </div>
                   </div>
                 </div>
-
-                <Separator />
 
                 {/* Journey Timeline */}
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">📋 Complete Journey Timeline</h3>
-                  <div className="space-y-3">
-                    {produceData.history.map((entry, index) => (
-                      <div key={index} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-sm">
-                          {index + 1}
-                        </div>
-                        <div className="flex-grow">
-                          <h4 className="font-semibold text-gray-800">{entry.action}</h4>
-                          <p className="text-sm text-gray-600">by {entry.actorName}</p>
-                          <p className="text-xs text-gray-500 mt-1">
-                            {new Date(entry.timestamp).toLocaleDateString()} at {new Date(entry.timestamp).toLocaleTimeString()}
-                          </p>
-                          {entry.location && (
-                            <p className="text-xs text-blue-600 mt-1">📍 {entry.location}</p>
-                          )}
-                          {entry.details && (
-                            <p className="text-xs text-gray-600 mt-1">{entry.details}</p>
-                          )}
-                        </div>
+                <div className="journey-timeline">
+                  <h3>📋 Complete Journey Timeline</h3>
+                  {produceData.history.map((entry, index) => (
+                    <div key={index} className="timeline-entry">
+                      <div className="timeline-index">{index + 1}</div>
+                      <div className="timeline-content">
+                        <h4>{entry.action}</h4>
+                        <p>by {entry.actorName}</p>
+                        <p>
+                          {new Date(entry.timestamp).toLocaleDateString()} at{' '}
+                          {new Date(entry.timestamp).toLocaleTimeString()}
+                        </p>
+                        {entry.location && <p>📍 {entry.location}</p>}
+                        {entry.details && <p>{entry.details}</p>}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg mt-6">
-                  <h4 className="font-semibold text-purple-800 mb-2">🎉 Blockchain Verification Complete</h4>
-                  <p className="text-sm text-purple-700">
-                    This complete journey has been permanently recorded on the blockchain. 
+                <div className="blockchain-box">
+                  <h4>🎉 Blockchain Verification Complete</h4>
+                  <p>
+                    This complete journey has been permanently recorded on the blockchain.
                     Every step from farm to retail is now verifiable and transparent.
                   </p>
                 </div>
 
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-green-800 mb-2">🛍️ Ready for Consumers</h4>
-                  <p className="text-sm text-green-700">
-                    Display the final QR code prominently so consumers can scan and verify 
+                <div className="consumer-ready">
+                  <h4>🛍️ Ready for Consumers</h4>
+                  <p>
+                    Display the final QR code prominently so consumers can scan and verify
                     the complete journey of their food product.
                   </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="flex gap-4 justify-center mt-8">
-          <Button onClick={handleBack} className="bg-purple-600 hover:bg-purple-700">
+        {/* Footer Buttons */}
+        <div className="retailer-buttons">
+          <button onClick={handleBack} className="primary-btn">
             Confirm Another Product
-          </Button>
-          <Button 
-            variant="outline" 
-            onClick={() => router.push('/consumer')}
-          >
+          </button>
+          <button onClick={() => router.push('/consumer')} className="outline-btn">
             Test Consumer View
-          </Button>
-          <Button 
-            variant="outline" 
-            onClick={() => router.push('/')}
-          >
+          </button>
+          <button onClick={() => router.push('/')} className="outline-btn">
             Back to Home
-          </Button>
+          </button>
         </div>
       </div>
     </div>

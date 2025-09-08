@@ -1,0 +1,173 @@
+/* Global container */
+.success-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #ebf4ff, #e0e7ff);
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header */
+.success-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.success-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e3a8a; /* blue-800 */
+  margin-bottom: 0.5rem;
+}
+
+.success-header p {
+  font-size: 1.125rem;
+  color: #2563eb; /* blue-600 */
+}
+
+/* Card styling */
+.success-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.success-card-header {
+  background: #2563eb; /* blue-600 */
+  color: white;
+  padding: 1.25rem;
+}
+
+.success-card-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.success-card-header p {
+  font-size: 0.875rem;
+  color: #dbeafe; /* lighter blue */
+}
+
+.success-card-body {
+  padding: 1.5rem;
+}
+
+/* Badge styling */
+.success-badge {
+  display: inline-block;
+  background: #e0f2fe; /* blue-100 */
+  color: #1e3a8a; /* blue-800 */
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* Info grid */
+.success-info-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .success-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.success-info-title {
+  font-weight: 600;
+  color: #374151; /* gray-700 */
+}
+
+.success-info-text {
+  color: #4b5563; /* gray-600 */
+}
+
+/* Separator */
+.success-separator {
+  height: 1px;
+  background: #e5e7eb; /* gray-200 */
+  margin: 1.5rem 0;
+}
+
+/* Blockchain box */
+.blockchain-box {
+  background: #eff6ff; /* blue-50 */
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.blockchain-box h4 {
+  font-weight: 600;
+  color: #1e3a8a; /* blue-800 */
+  margin-bottom: 0.5rem;
+}
+
+.blockchain-box p {
+  font-size: 0.875rem;
+  color: #1d4ed8; /* blue-700 */
+}
+
+/* Buttons */
+.success-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.success-buttons .primary-btn {
+  background: #2563eb;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.success-buttons .primary-btn:hover {
+  background: #1e40af; /* darker blue */
+}
+
+.success-buttons .outline-btn {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.success-buttons .outline-btn:hover {
+  background: #f9fafb;
+}
+
+/* Next steps card */
+.next-steps {
+  margin-top: 2rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  padding: 1.25rem 1.5rem;
+}
+
+.next-steps h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.next-steps ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.next-steps li {
+  font-size: 0.875rem;
+  color: #4b5563; /* gray-600 */
+  margin-bottom: 0.5rem;
+}
