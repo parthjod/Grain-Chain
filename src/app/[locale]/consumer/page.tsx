@@ -138,7 +138,7 @@ export default function ConsumerPage() {
       <main className={styles['main-container']}>
         {/* Hero Section */}
         <section className={styles['hero-section']}>
-          <h1>{t('grainChain')}</h1>
+          <h1>{t('consumerHome')}</h1>
           <p>{t('title')}</p>
         </section>
 

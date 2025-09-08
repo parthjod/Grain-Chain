@@ -141,7 +141,8 @@
     }
   },
   "Farmer": {
-    "title": "Farmer Portal - Register Your Produce",
+    "farmerHome": "Register your produce and make it immutable",
+    "title": "Farmer Portal",
     "register": "Register New Produce",
     "registerDescription": "Enter the details of your produce to register it on the blockchain",
     "produceId": "Produce ID",
@@ -194,7 +195,7 @@
     "qrCodeInfo": "This QR code contains all the information about your produce. Distributors, retailers, and consumers can scan it to verify the authenticity and track the journey of your produce through the supply chain."
   },
   "Distributor": {
-    "title": "Distributor Portal - Update Logistics",
+    "title": "Distributor Portal",
     "updateStatus": "Update Produce Status",
     "updateStatusDescription": "Update the logistics status and location of produce in transit",
     "produceId": "Produce ID",
@@ -258,6 +259,7 @@
     ]
   },
   "Retailer": {
+    "retailerHome": "Retailer Portal",
     "title": "Retailer Portal - Confirm Arrival & Set Price",
     "confirmArrival": "Confirm Produce Arrival",
     "confirmArrivalDescription": "Confirm the arrival of produce and set the retail price",
@@ -336,6 +338,7 @@
     "location": "Location: {location}"
   },
   "Consumer": {
+    "consumerHome": "Consumer",
     "title": "Consumer Portal - Trace Your Food",
     "scanQRCode": "Scan QR Code",
     "scanQRCodeDescription": "Scan the QR code on the product packaging to trace its journey",

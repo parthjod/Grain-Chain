@@ -94,7 +94,7 @@ export default function RetailerPage() {
 
       {/* Page Header */}
       <div className="page-header">
-        <h1>{t('grainChain')}</h1>
+        <h1>{t('retailerHome')}</h1>
         <p>{t('title')}</p>
       </div>
 
