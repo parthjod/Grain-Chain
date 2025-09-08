@@ -56,7 +56,11 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+      colors: {
+        'dark-navy': '#0d1b2a',
+        'green': '#2ecc71',
+      }
   	}
   },
   plugins: [tailwindcssAnimate],

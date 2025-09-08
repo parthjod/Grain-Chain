@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from '@/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';
-import '@/app/styles/distributor.css';
+import styles from '@/app/styles/distributor.module.css';
 
 interface DistributorFormData {
   produceId: string;
@@ -84,41 +84,30 @@ export default function DistributorPage() {
   return (
     <div>
       {/* Floating background particles */}
-      <div className="particles">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
+      <div className={styles.particles}>
+        <div className={styles.particle}></div>
+        <div className={styles.particle}></div>
+        <div className={styles.particle}></div>
+        <div className={styles.particle}></div>
       </div>
 
-      {/* Navigation */}
-      <nav>
-        <div className="nav-container">
-          <div className="logo">GrainChain</div>
-          <div className="nav-links">
-            <a href="/">{t('home')}</a>
-            <a href="/farmer">{t('farmer')}</a>
-            <a href="/distributor">{t('distributor')}</a>
-            <a href="/retailer">{t('retailer')}</a>
-          </div>
-        </div>
-      </nav>
+      
 
       {/* Main content */}
-      {isClient && <main className="main-container">
-        <div className="page-header">
+      {isClient && <main className={styles['main-container']}>
+        <div className={styles['page-header']}>
           <h1>{t('title')}</h1>
           <p>{t('updateStatusDescription')}</p>
         </div>
 
-        <div className="form-card">
-          <div className="form-header">
+        <div className={styles['form-card']}>
+          <div className={styles['form-header']}>
             <h2>{t('updateStatus')}</h2>
           </div>
 
-          <form onSubmit={handleSubmit} className="form-body">
-            <div className="form-grid">
-              <div className="form-group">
+          <form onSubmit={handleSubmit} className={styles['form-body']}>
+            <div className={styles['form-grid']}>
+              <div className={styles['form-group']}>
                 <label htmlFor="produceId">{t('produceId')}</label>
                 <input
                   type="text"
@@ -130,7 +119,7 @@ export default function DistributorPage() {
                 />
               </div>
 
-              <div className="form-group">
+              <div className={styles['form-group']}>
                 <label htmlFor="distributorName">{t('distributorName')}</label>
                 <input
                   type="text"
@@ -142,7 +131,7 @@ export default function DistributorPage() {
                 />
               </div>
 
-              <div className="form-group">
+              <div className={styles['form-group']}>
                 <label htmlFor="status">{t('currentStatus')}</label>
                 <select
                   id="status"
@@ -158,7 +147,7 @@ export default function DistributorPage() {
                 </select>
               </div>
 
-              <div className="form-group">
+              <div className={styles['form-group']}>
                 <label htmlFor="walletAddress">{t('walletAddress')}</label>
                 <input
                   type="text"
@@ -171,7 +160,7 @@ export default function DistributorPage() {
               </div>
             </div>
 
-            <div className="form-group full-width">
+            <div className={`${styles['form-group']} ${styles['full-width']}`}>
               <label htmlFor="location">{t('currentLocation')}</label>
               <textarea
                 id="location"
@@ -182,7 +171,7 @@ export default function DistributorPage() {
               ></textarea>
             </div>
 
-            <div className="form-group full-width">
+            <div className={`${styles['form-group']} ${styles['full-width']}`}>
               <label htmlFor="notes">{t('additionalNotes')}</label>
               <textarea
                 id="notes"
@@ -193,32 +182,32 @@ export default function DistributorPage() {
               ></textarea>
             </div>
 
-            <button type="submit" className="submit-button" disabled={isLoading}>
+            <button type="submit" className={styles['submit-button']} disabled={isLoading}>
               {isLoading ? t('updating') : t('update')}
             </button>
           </form>
         </div>
 
         {/* Quick Status Reference */}
-        <div className="form-card" style={{ marginTop: '2rem' }}>
-          <div className="form-header">
+        <div className={styles['form-card']} style={{ marginTop: '2rem' }}>
+          <div className={styles['form-header']}>
             <h2>{t('quickStatusReference')}</h2>
           </div>
-          <div className="reference-grid">
+          <div className={styles['reference-grid']}>
             <div>
-              <h4 className="ref-title">{t('inTransit')}</h4>
+              <h4 className={styles['ref-title']}>{t('inTransit')}</h4>
               <p>{t('inTransitDescription')}</p>
             </div>
             <div>
-              <h4 className="ref-title">{t('atWarehouse')}</h4>
+              <h4 className={styles['ref-title']}>{t('atWarehouse')}</h4>
               <p>{t('atWarehouseDescription')}</p>
             </div>
             <div>
-              <h4 className="ref-title">{t('outForDelivery')}</h4>
+              <h4 className={styles['ref-title']}>{t('outForDelivery')}</h4>
               <p>{t('outForDeliveryDescription')}</p>
             </div>
             <div>
-              <h4 className="ref-title">{t('delayed')}</h4>
+              <h4 className={styles['ref-title']}>{t('delayed')}</h4>
               <p>{t('delayedDescription')}</p>
             </div>
           </div>

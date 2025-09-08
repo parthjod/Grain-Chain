@@ -230,6 +230,13 @@
     "distributor": "Distributor",
     "retailer": "Retailer"
   },
+  "Navigation": {
+    "home": "Home",
+    "farmer": "Farmer",
+    "distributor": "Distributor",
+    "retailer": "Retailer",
+    "consumer": "Consumer"
+  },
   "DistributorSuccess": {
     "title": "Status Update Successful!",
     "logisticsUpdated": "Logistics Updated",
