@@ -5,6 +5,13 @@ import { useRouter } from '@/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';
 import styles from '@/app/styles/distributor.module.css';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface DistributorFormData {
   produceId: string;
@@ -65,8 +72,7 @@ export default function DistributorPage() {
       }
     } catch (error) {
       toast({
-        title: t('error'),
-        description: t('errorMessage'),
+        title: t('error'),        description: t('errorMessage'),
         variant: 'destructive',
       });
     } finally {
@@ -96,8 +102,8 @@ export default function DistributorPage() {
       {/* Main content */}
       {isClient && <main className={styles['main-container']}>
         <div className={styles['page-header']}>
-          <h1>{t('title')}</h1>
-          <p>{t('updateStatusDescription')}</p>
+          <h1 style={{color:"#764BA2"}}>{t('title')}</h1>
+          <p style={{color:"#764BA2"}}>{t('updateStatusDescription')}</p>
         </div>
 
         <div className={styles['form-card']}>
@@ -133,18 +139,18 @@ export default function DistributorPage() {
 
               <div className={styles['form-group']}>
                 <label htmlFor="status">{t('currentStatus')}</label>
-                <select
-                  id="status"
-                  value={formData.status}
-                  onChange={(e) => handleChange('status', e.target.value)}
-                >
-                  <option value="">{t('selectCurrentStatus')}</option>
-                  <option value="In Transit">{t('inTransit')}</option>
-                  <option value="At Warehouse">{t('atWarehouse')}</option>
-                  <option value="Out for Delivery">{t('outForDelivery')}</option>
-                  <option value="Delayed">{t('delayed')}</option>
-                  <option value="Customs Clearance">{t('customsClearance')}</option>
-                </select>
+                <Select onValueChange={(value) => handleChange('status', value)} value={formData.status}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder={t('selectCurrentStatus')} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="In Transit">{t('inTransit')}</SelectItem>
+                    <SelectItem value="At Warehouse">{t('atWarehouse')}</SelectItem>
+                    <SelectItem value="Out for Delivery">{t('outForDelivery')}</SelectItem>
+                    <SelectItem value="Delayed">{t('delayed')}</SelectItem>
+                    <SelectItem value="Customs Clearance">{t('customsClearance')}</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className={styles['form-group']}>
