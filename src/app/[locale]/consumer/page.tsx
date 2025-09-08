@@ -5,7 +5,7 @@ import QrScanner from 'react-qr-scanner';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
-import '@/app/styles/consumer.css';
+import styles from '@/app/styles/consumer.module.css';
 
 interface ProduceData {
   produceId: string;
@@ -133,34 +133,34 @@ export default function ConsumerPage() {
 
   return (
     <div>
-      <div className="grain-bg"></div>
+      <div className={styles['grain-bg']}></div>
 
-      <main className="main-container">
+      <main className={styles['main-container']}>
         {/* Hero Section */}
-        <section className="hero-section">
+        <section className={styles['hero-section']}>
           <h1>{t('grainChain')}</h1>
           <p>{t('title')}</p>
         </section>
 
         {/* Initial Scan Card */}
         {!scanning && !produceData && (
-          <div className="scanner-card">
-            <div className="scanner-header">
+          <div className={styles['scanner-card']}>
+            <div className={styles['scanner-header']}>
               <h2>{t('scanQRCode')}</h2>
               <p>{t('scanQRCodeDescription')}</p>
             </div>
-            <div className="scanner-body">
-              <div className="qr-icon-wrapper">
-                <div className="qr-icon">
-                  <div className="qr-grid">
+            <div className={styles['scanner-body']}>
+              <div className={styles['qr-icon-wrapper']}>
+                <div className={styles['qr-icon']}>
+                  <div className={styles['qr-grid']}>
                     {Array.from({ length: 9 }).map((_, i) => (
-                      <div key={i} className="qr-cell"></div>
+                      <div key={i} className={styles['qr-cell']}></div>
                     ))}
                   </div>
                 </div>
               </div>
-              <p className="scan-text">{t('scanButtonDescription')}</p>
-              <button onClick={() => setScanning(true)} className="scan-btn">
+              <p className={styles['scan-text']}>{t('scanButtonDescription')}</p>
+              <button onClick={() => setScanning(true)} className={styles['scan-btn']}>
                 {t('scanButton')}
               </button>
             </div>
@@ -169,20 +169,20 @@ export default function ConsumerPage() {
 
         {/* QR Scanning Active */}
         {scanning && (
-          <div className="scanner-card">
-            <div className="scanner-header">
+          <div className={styles['scanner-card']}>
+            <div className={styles['scanner-header']}>
               <h2>{t('scanning')}</h2>
               <p>{t('scanningDescription')}</p>
             </div>
-            <div className="scanner-body">
+            <div className={styles['scanner-body']}>
               <QrScanner
                 onScan={(result) => handleScan(result?.text)}
                 onError={handleError}
                 style={{ width: '100%' }}
                 constraints={{ video: { facingMode: 'environment' } }}
               />
-              {error && <div className="error">{error}</div>}
-              <button onClick={() => setScanning(false)} className="scan-btn">
+              {error && <div className={styles.error}>{error}</div>}
+              <button onClick={() => setScanning(false)} className={styles['scan-btn']}>
                 {t('cancel')}
               </button>
             </div>
@@ -192,13 +192,13 @@ export default function ConsumerPage() {
         {/* Produce Data */}
         {produceData && (
           <>
-            <div className="scanner-card">
-              <div className="scanner-header">
+            <div className={styles['scanner-card']}>
+              <div className={styles['scanner-header']}>
                 <h2>{t('productJourney')}</h2>
                 <p>{t('productJourneyDescription')}</p>
               </div>
-              <div className="scanner-body">
-                <div className="details-grid">
+              <div className={styles['scanner-body']}>
+                <div className={styles['details-grid']}>
                   <div>
                     <h3>{t('produceId')}</h3>
                     <span>{produceData.produceId}</span>
@@ -238,11 +238,11 @@ export default function ConsumerPage() {
                 </div>
 
                 {/* Timeline */}
-                <div className="timeline">
+                <div className={styles.timeline}>
                   {timeline.map((step) => (
-                    <div key={step.id} className={`timeline-step ${step.status}`}>
-                      <div className="timeline-marker">{step.id}</div>
-                      <div className="timeline-content">
+                    <div key={step.id} className={`${styles['timeline-step']} ${styles[step.status]}`}>
+                      <div className={styles['timeline-marker']}>{step.id}</div>
+                      <div className={styles['timeline-content']}>
                         <h4>{step.title}</h4>
                         <p>{step.description}</p>
                         <small>
@@ -254,17 +254,17 @@ export default function ConsumerPage() {
                   ))}
                 </div>
 
-                <button onClick={resetScanner} className="scan-btn">
+                <button onClick={resetScanner} className={styles['scan-btn']}>
                   {t('scanAnother')}
                 </button>
               </div>
             </div>
 
-            <div className="scanner-card">
-              <div className="scanner-header">
+            <div className={styles['scanner-card']}>
+              <div className={styles['scanner-header']}>
                 <h2>{t('blockchainVerification')}</h2>
               </div>
-              <div className="scanner-body">
+              <div className={styles['scanner-body']}>
                 <p>{t('blockchainVerificationDetail')}</p>
               </div>
             </div>
@@ -272,19 +272,19 @@ export default function ConsumerPage() {
         )}
 
         {/* Features Section */}
-        <section className="features-section">
-          <div className="feature-card">
-            <div className="feature-icon farm">🌾</div>
+        <section className={styles['features-section']}>
+          <div className={styles['feature-card']}>
+            <div className={`${styles['feature-icon']} ${styles.farm}`}>🌾</div>
             <h3>{t('farmToTable')}</h3>
             <p>{t('farmToTableDescription')}</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon blockchain">🔗</div>
+          <div className={styles['feature-card']}>
+            <div className={`${styles['feature-icon']} ${styles.blockchain}`}>🔗</div>
             <h3>{t('blockchainVerified')}</h3>
             <p>{t('blockchainVerifiedDescription')}</p>
           </div>
-          <div className="feature-card">
-            <div className="feature-icon transparency">👁</div>
+          <div className={styles['feature-card']}>
+            <div className={`${styles['feature-icon']} ${styles.transparency}`}>👁</div>
             <h3>{t('fullTransparency')}</h3>
             <p>{t('fullTransparencyDescription')}</p>
           </div>

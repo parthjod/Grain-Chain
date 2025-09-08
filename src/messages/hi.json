@@ -368,5 +368,12 @@
     "grainChain": "ग्रेनचेन",
     "farmRegistration": "Farm Registration",
     "registeredBy": "registered by"
+  },
+  "Navigation": {
+    "home": "होम",
+    "farmer": "किसान",
+    "distributor": "वितरक",
+    "retailer": "खुदरा विक्रेता",
+    "consumer": "उपभोक्ता"
   }
 }

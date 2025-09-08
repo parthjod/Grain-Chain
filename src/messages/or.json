@@ -368,5 +368,12 @@
     "grainChain": "ଗ୍ରେନଚେନ୍",
     "farmRegistration": "Farm Registration",
     "registeredBy": "registered by"
+  },
+  "Navigation": {
+    "home": "ହୋମ୍",
+    "farmer": "କୃଷକ",
+    "distributor": "ବିତରକ",
+    "retailer": "ଖୁଚୁରା ବେପାରୀ",
+    "consumer": "ଗ୍ରାହକ"
   }
 }
