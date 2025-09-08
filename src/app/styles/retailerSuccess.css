@@ -1,0 +1,202 @@
+/* Global container */
+.retailer-success-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #faf5ff, #fdf2f8);
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  color:red
+}
+
+/* Header */
+.retailer-success-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.retailer-success-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #6b21a8; /* purple-800 */
+  margin-bottom: 0.5rem;
+}
+
+.retailer-success-header p {
+  font-size: 1.125rem;
+  color: #9333ea; /* purple-600 */
+}
+
+/* Card base */
+.retailer-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Card header */
+.retailer-card-header {
+  background: linear-gradient(to right, #9333ea, #db2777);
+  color: white;
+  padding: 1.25rem;
+}
+
+.retailer-card-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.retailer-card-header p {
+  font-size: 0.875rem;
+  color: #f3e8ff; /* lighter purple */
+}
+
+/* Card content */
+.retailer-card-body {
+  padding: 1.5rem;
+}
+
+/* Badge */
+.retailer-badge {
+  display: inline-block;
+  background: #ede9fe; /* purple-100 */
+  color: #6b21a8; /* purple-800 */
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* Info grid */
+.retailer-info-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .retailer-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.retailer-info-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.retailer-info-value {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+/* Timeline */
+.journey-timeline {
+  margin-top: 1.5rem;
+}
+
+.timeline-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 0.5rem;
+}
+
+.timeline-index {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: #9333ea;
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-content h4 {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.timeline-content p {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* Highlighted sections */
+.blockchain-box {
+  background: linear-gradient(to right, #faf5ff, #fdf2f8);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.blockchain-box h4 {
+  color: #6b21a8;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.blockchain-box p {
+  font-size: 0.875rem;
+  color: #7e22ce;
+}
+
+.consumer-ready {
+  background: #ecfdf5;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.consumer-ready h4 {
+  color: #047857;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.consumer-ready p {
+  font-size: 0.875rem;
+  color: #065f46;
+}
+
+/* Buttons */
+.retailer-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.retailer-buttons .primary-btn {
+  background: #9333ea;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.retailer-buttons .primary-btn:hover {
+  background: #6b21a8;
+}
+
+.retailer-buttons .outline-btn {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.retailer-buttons .outline-btn:hover {
+  background: #f9fafb;
+}

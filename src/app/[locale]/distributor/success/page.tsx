@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useTranslations } from 'next-intl';
-
+import '@/app/styles/distributorSuccess.css';
 interface ProduceData {
   produceId: string;
   status: string;
