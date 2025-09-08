@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -28,7 +28,7 @@ body {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(46, 125, 50, 0.15);
   border-radius: 50%;
   animation: float 20s infinite linear;
 }
@@ -54,7 +54,7 @@ body {
 nav {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 20px rgba(27, 94, 32, 0.15);
   padding: 1rem 2rem;
   position: fixed;
   width: 100%;
@@ -78,7 +78,7 @@ nav:hover {
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #5a67d8;
+  color: #2e7d32;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -95,7 +95,7 @@ nav:hover {
 
 .nav-links a {
   text-decoration: none;
-  color: #4a5568;
+  color: #335b3c;
   font-weight: 500;
   position: relative;
   transition: color 0.3s ease;
@@ -108,12 +108,12 @@ nav:hover {
   left: 0;
   width: 0;
   height: 2px;
-  background: #5a67d8;
+  background: #2e7d32;
   transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #5a67d8;
+  color: #2e7d32;
 }
 
 .nav-links a:hover:after {
@@ -149,14 +149,14 @@ nav:hover {
 .page-header h1 {
   font-size: 3rem;
   font-weight: 700;
-  color: white;
+  color: #1b5e20;
   margin-bottom: 0.5rem;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 20px rgba(46, 125, 50, 0.2);
 }
 
 .page-header p {
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(27, 94, 32, 0.9);
 }
 
 @keyframes fadeInDown {
@@ -172,18 +172,18 @@ nav:hover {
 
 /* Form card */
 .form-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 60px rgba(27, 94, 32, 0.12);
   animation: fadeInUp 0.8s ease;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 25px 70px rgba(46, 125, 50, 0.2);
 }
 
 @keyframes fadeInUp {
@@ -198,7 +198,7 @@ nav:hover {
 }
 
 .form-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
   color: white;
   padding: 1.5rem;
   border-radius: 15px 15px 0 0;
@@ -206,7 +206,4 @@ nav:hover {
   text-align: center;
 }
 
-.form-header h2 {
-  font-size: 1.75rem;
-  margin-bottom: 0
-}
+.form-header h2 { font-size: 1.75rem; margin-bottom: 0 }

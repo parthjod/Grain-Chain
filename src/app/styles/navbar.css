@@ -5,9 +5,9 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(232,245,233,0.95) 100%);
+  border-bottom: 1px solid #e3f2e6;
+  box-shadow: 0 4px 16px rgba(27, 94, 32, 0.08);
 }
 
 /* Navbar container */
@@ -31,7 +31,7 @@
 .navbar-logo {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #2ecc71;
+  color: #2e7d32;
 }
 
 /* Nav links container */
@@ -43,54 +43,47 @@
 
 /* Nav buttons */
 .navbar-btn {
-  color: #fff;
+  color: #ffffff;
   border: none;
   padding: 0.5rem 1.2rem;
-  border-radius: 6px;
+  border-radius: 16px;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .navbar-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(46, 125, 50, 0.18);
 }
 
 /* Active button */
 .navbar-btn-active {
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
   font-weight: 600;
 }
 
 /* Role colors */
-.navbar-btn-farmer {
-  background: #2ecc71;
-}
+.navbar-btn-farmer { background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%); }
 
 .navbar-btn-farmer:hover {
   background: #27ae60;
 }
 
-.navbar-btn-distributor {
-  background: #3498db;
-}
+.navbar-btn-distributor { background: linear-gradient(135deg, #33691e 0%, #558b2f 100%); }
 
 .navbar-btn-distributor:hover {
   background: #2980b9;
 }
 
-.navbar-btn-retailer {
-  background: #9b59b6;
-}
+.navbar-btn-retailer { background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%); }
 
 .navbar-btn-retailer:hover {
   background: #8e44ad;
 }
 
-.navbar-btn-consumer {
-  background: #e67e22;
-}
+.navbar-btn-consumer { background: linear-gradient(135deg, #66bb6a 0%, #a5d6a7 100%); color: #1b5e20; }
 
 .navbar-btn-consumer:hover {
   background: #d35400;

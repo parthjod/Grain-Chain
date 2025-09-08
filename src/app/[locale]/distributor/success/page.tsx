@@ -36,17 +36,17 @@ export default function DistributorSuccessPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-100 p-4">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-blue-800 mb-2">GrainChain</h1>
-          <p className="text-lg text-blue-600">{t('title')}</p>
+          <h1 className="text-4xl font-bold text-emerald-800 mb-2">GrainChain</h1>
+          <p className="text-lg text-emerald-700">{t('title')}</p>
         </div>
 
-        <Card className="shadow-lg">
-          <CardHeader className="bg-blue-600 text-white">
+        <Card className="shadow-lg border border-emerald-100">
+          <CardHeader className="bg-gradient-to-r from-emerald-600 to-green-600 text-white">
             <CardTitle className="text-2xl">{t('logisticsUpdated')}</CardTitle>
-            <CardDescription className="text-blue-100">
+            <CardDescription className="text-emerald-100">
               {t('logisticsUpdatedDescription')}
             </CardDescription>
           </CardHeader>
@@ -55,37 +55,37 @@ export default function DistributorSuccessPage() {
               {produceData && (
                 <div className="space-y-4">
                   <div className="text-center">
-                    <Badge variant="secondary" className="text-lg px-4 py-2 mb-4">
+                    <Badge variant="secondary" className="text-lg px-4 py-2 mb-4 bg-emerald-50 text-emerald-800">
                       {t('produceIdLabel', { produceId: produceData.produceId })}
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <h3 className="font-semibold text-gray-700">{t('currentStatus')}</h3>
-                      <Badge className="bg-blue-100 text-blue-800">
+                      <h3 className="font-semibold text-emerald-800">{t('currentStatus')}</h3>
+                      <Badge className="bg-emerald-100 text-emerald-800">
                         {produceData.status}
                       </Badge>
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="font-semibold text-gray-700">{t('location')}</h3>
-                      <p className="text-gray-600">{produceData.location}</p>
+                      <h3 className="font-semibold text-emerald-800">{t('location')}</h3>
+                      <p className="text-emerald-700/80">{produceData.location}</p>
                     </div>
                   </div>
 
                   <Separator />
 
                   <div className="space-y-2">
-                    <h3 className="font-semibold text-gray-700">{t('updateTime')}</h3>
-                    <p className="text-gray-600">
+                    <h3 className="font-semibold text-emerald-800">{t('updateTime')}</h3>
+                    <p className="text-emerald-700/80">
                       {new Date(produceData.timestamp).toLocaleString()}
                     </p>
                   </div>
 
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-blue-800 mb-2">{t('blockchainConfirmation')}</h4>
-                    <p className="text-sm text-blue-700">
+                  <div className="bg-emerald-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-emerald-800 mb-2">{t('blockchainConfirmation')}</h4>
+                    <p className="text-sm text-emerald-700">
                       {t('blockchainConfirmationDescription')}
                     </p>
                   </div>
@@ -93,7 +93,7 @@ export default function DistributorSuccessPage() {
               )}
 
               <div className="flex gap-4 justify-center">
-                <Button onClick={handleBack} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={handleBack} className="bg-emerald-600 hover:bg-emerald-700">
                   {t('updateAnother')}
                 </Button>
                 <Button
@@ -113,7 +113,7 @@ export default function DistributorSuccessPage() {
               <CardTitle className="text-lg">{t('nextSteps')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-2 text-sm text-emerald-700/80">
                 {t.raw('nextStepsItems').map((item: string, index: number) => (
                   <li key={index}>• {item}</li>
                 ))}
