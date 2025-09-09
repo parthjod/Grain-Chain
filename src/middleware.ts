@@ -1,16 +1,20 @@
-import createMiddleware from 'next-intl/middleware';
- 
+import createMiddleware from "next-intl/middleware";
+
 export default createMiddleware({
-  // A list of all locales that are supported
-  locales: ['en', 'hi', 'or'],
- 
-  // Used when no locale matches
-  defaultLocale: 'en'
+  // ✅ All supported locales
+  locales: ["en", "hi", "or"],
+
+  // ✅ Fallback when no locale matches
+  defaultLocale: "en",
 });
- 
+
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  matcher: [
+    // Match all routes except:
+    // - /api (API routes)
+    // - /_next (Next.js internals)
+    // - /_vercel (Vercel internals)
+    // - Static files (contain a dot, e.g. favicon.ico, robots.txt, images, etc.)
+    "/((?!api|_next|_vercel|.*\\..*).*)",
+  ],
 };
