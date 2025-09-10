@@ -56,6 +56,7 @@ export default function RetailerPage() {
         toast({
           title: t('success'),
           description: t('successMessage'),
+          className: 'toast success'
         });
         localStorage.setItem('lastProduceId', formData.produceId);
         router.push('/retailer/success');
@@ -63,6 +64,7 @@ export default function RetailerPage() {
         toast({
           title: t('error'),
           description: data.error || t('errorMessage'),
+          className: 'toast error',
           variant: 'destructive',
         });
       }
