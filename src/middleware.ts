@@ -7,7 +7,6 @@ export default createMiddleware({
   // ✅ Default locale when no match is found
   defaultLocale: 'en',
 
-  // ✅ Optional: automatically redirect root (/) to default locale
   localeDetection: true
 });
 
