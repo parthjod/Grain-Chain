@@ -1,16 +1,19 @@
 import createMiddleware from 'next-intl/middleware';
- 
+
 export default createMiddleware({
-  // A list of all locales that are supported
+  // ✅ All supported locales
   locales: ['en', 'hi', 'or'],
- 
-  // Used when no locale matches
-  defaultLocale: 'en'
+
+  // ✅ Default locale when no match is found
+  defaultLocale: 'en',
+
+  // ✅ Optional: automatically redirect root (/) to default locale
+  localeDetection: true
 });
- 
+
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  // ✅ Match all routes except API, Next.js internals, Vercel internals, or static files
+  matcher: [
+    '/((?!api|_next|_vercel|.*\\..*).*)'
+  ]
 };

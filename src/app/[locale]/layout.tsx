@@ -35,29 +35,32 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+// ✅ Fix: make params async and await its value before use
 export default async function RootLayout({
   children,
   params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>; // mark as Promise
 }) {
-  unstable_setRequestLocale(params.locale);
+  const { locale } = await params; // ✅ Await params
+
+  unstable_setRequestLocale(locale);
 
   let messages;
   try {
     messages = await getMessages();
   } catch (error) {
-    console.error(`Failed to load messages for locale ${params.locale}:`, error);
+    console.error(`Failed to load messages for locale ${locale}:`, error);
     messages = {}; // Fallback to empty messages
   }
 
   return (
-    <html lang={params.locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <NextIntlClientProvider locale={params.locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <Navigation />
           {children}
           <Toaster />
