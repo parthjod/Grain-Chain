@@ -57,6 +57,7 @@ export default function RetailerPage() {
           title: t('success'),
           description: t('successMessage'),
         });
+        localStorage.setItem('lastProduceId', formData.produceId);
         router.push('/retailer/success');
       } else {
         toast({
@@ -84,7 +85,7 @@ export default function RetailerPage() {
   };
 
   return (
-    <div className="main-container">
+    <div className="retailer-page-container">
       {/* Floating Background Shapes */}
       <div className="bg-pattern">
         <div className="floating-shape"></div>

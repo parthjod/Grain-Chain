@@ -1,0 +1,42 @@
+
+:root {
+  --blue-light: #e6f2ff;
+  --blue-primary: #2563eb;
+  --blue-dark: #0f172a;
+  --blue-accent: #60a5fa;
+  --card-light: #ffffffcc;
+  --card-dark: #1e293b;
+  --text-light: #f1f5f9;
+  --text-dark: #0f172a;
+  --border-light: #dbeafe;
+  --border-dark: #334155;
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.15);
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+/* Input, select, textarea styling */
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #60a5fa;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #0f172a;
+  background: #e6f2ff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+  display: block;
+}

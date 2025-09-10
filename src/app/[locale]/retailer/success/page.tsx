@@ -87,7 +87,7 @@ export default function RetailerSuccessPage() {
     );
   }
 
-  return (
+    return (
     <div className="retailer-success-container">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
@@ -125,25 +125,25 @@ export default function RetailerSuccessPage() {
                   {/* Left Info */}
                   <div>
                     <div className="text-center mb-4">
-                      <span className="retailer-badge">🆔 {produceData.produceId}</span>
+                      <span className="retailer-badge">{t('produceIdLabel', { produceId: produceData.produceId })}</span>
                     </div>
                     <div className="space-y-3">
                       <div className="flex justify-between">
-                        <span className="retailer-info-label">🌾 Product:</span>
+                        <span className="retailer-info-label">{t('productLabel')}</span>
                         <span className="retailer-info-value">{produceData.produceType}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="retailer-info-label">📏 Quantity:</span>
+                        <span className="retailer-info-label">{t('quantityLabel')}</span>
                         <span className="retailer-info-value">
                           {produceData.quantity} {produceData.unit}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="retailer-info-label">👨‍🌾 Farmer:</span>
+                        <span className="retailer-info-label">{t('farmerLabel')}</span>
                         <span className="retailer-info-value">{produceData.farmerName}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="retailer-info-label">📍 Origin:</span>
+                        <span className="retailer-info-label">{t('originLabel')}</span>
                         <span className="retailer-info-value">{produceData.origin}</span>
                       </div>
                     </div>
@@ -152,25 +152,25 @@ export default function RetailerSuccessPage() {
                   {/* Right Info */}
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="retailer-info-label">💰 Price:</span>
+                      <span className="retailer-info-label">{t('priceLabel')}</span>
                       {produceData.price ? (
                         <span className="retailer-badge">${produceData.price}</span>
                       ) : (
-                        <span className="retailer-info-value">Not set</span>
+                        <span className="retailer-info-value">{t('notSet')}</span>
                       )}
                     </div>
                     <div className="flex justify-between">
-                      <span className="retailer-info-label">📊 Status:</span>
+                      <span className="retailer-info-label">{t('statusLabel')}</span>
                       <span className="retailer-badge">{produceData.status}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="retailer-info-label">✅ Sold:</span>
+                      <span className="retailer-info-label">{t('soldLabel')}</span>
                       <span className="retailer-badge">
-                        {produceData.isSold ? 'Yes' : 'No'}
+                        {produceData.isSold ? t('yes') : t('no')}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="retailer-info-label">🏪 Current Holder:</span>
+                      <span className="retailer-info-label">{t('currentHolderLabel')}</span>
                       <span className="retailer-info-value">{produceData.currentHolder}</span>
                     </div>
                   </div>
@@ -178,18 +178,18 @@ export default function RetailerSuccessPage() {
 
                 {/* Journey Timeline */}
                 <div className="journey-timeline">
-                  <h3>📋 Complete Journey Timeline</h3>
+                  <h3>{t('completeJourneyTimeline')}</h3>
                   {produceData.history.map((entry, index) => (
                     <div key={index} className="timeline-entry">
                       <div className="timeline-index">{index + 1}</div>
                       <div className="timeline-content">
                         <h4>{entry.action}</h4>
-                        <p>by {entry.actorName}</p>
+                        <p>{t('by', { actor: entry.actorName })}</p>
                         <p>
-                          {new Date(entry.timestamp).toLocaleDateString()} at{' '}
+                          {new Date(entry.timestamp).toLocaleDateString()} {t('timestampPrefix', { default: 'at' })}{' '}
                           {new Date(entry.timestamp).toLocaleTimeString()}
                         </p>
-                        {entry.location && <p>📍 {entry.location}</p>}
+                        {entry.location && <p>{t('location', { location: entry.location })}</p>}
                         {entry.details && <p>{entry.details}</p>}
                       </div>
                     </div>
@@ -197,19 +197,13 @@ export default function RetailerSuccessPage() {
                 </div>
 
                 <div className="blockchain-box">
-                  <h4>🎉 Blockchain Verification Complete</h4>
-                  <p>
-                    This complete journey has been permanently recorded on the blockchain.
-                    Every step from farm to retail is now verifiable and transparent.
-                  </p>
+                  <h4>{t('blockchainVerificationComplete')}</h4>
+                  <p>{t('blockchainVerificationCompleteDescription')}</p>
                 </div>
 
                 <div className="consumer-ready">
-                  <h4>🛍️ Ready for Consumers</h4>
-                  <p>
-                    Display the final QR code prominently so consumers can scan and verify
-                    the complete journey of their food product.
-                  </p>
+                  <h4>{t('readyForConsumers')}</h4>
+                  <p>{t('readyForConsumersDescription')}</p>
                 </div>
               </div>
             </div>
@@ -219,13 +213,13 @@ export default function RetailerSuccessPage() {
         {/* Footer Buttons */}
         <div className="retailer-buttons">
           <button onClick={handleBack} className="primary-btn">
-            Confirm Another Product
+            {t('confirmAnother')}
           </button>
           <button onClick={() => router.push('/consumer')} className="outline-btn">
-            Test Consumer View
+            {t('testConsumerView')}
           </button>
           <button onClick={() => router.push('/')} className="outline-btn">
-            Back to Home
+            {t('backToHome')}
           </button>
         </div>
       </div>

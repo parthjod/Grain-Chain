@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import '@/app/styles/landing.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Navigation } from "@/components/navigation";
 import { NextIntlClientProvider } from 'next-intl';
 import { unstable_setRequestLocale, getMessages } from 'next-intl/server';
 import { locales } from "@/i18n";
+import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geistSans = GeistSans;
+const geistMono = GeistMono;
 
 export const metadata: Metadata = {
   title: "GrainChain - Blockchain Supply Chain for Agriculture",

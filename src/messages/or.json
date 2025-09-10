@@ -187,7 +187,7 @@
     "title": "ପଞ୍ଜିକରଣ ସଫଳ ହେଲା!",
     "produceRegistered": "ଉତ୍ପାଦ ପଞ୍ଜିକୃତ",
     "produceRegisteredDescription": "ଆପଣଙ୍କର ଉତ୍ପାଦ ବ୍ଲକଚେନରେ ସଫଳତାର ସହିତ ପଞ୍ଜିକୃତ ହୋଇଛି",
-    "produceIdLabel": "ଉତ୍ପାଦ ଆଇଡି: {produceId}",
+    "produceIdLabel": "ଉତ୍ପାଦ ଆଇଡି:",
     "saveQRCode": "ଏହି QR କୋଡ୍ ସେଭ୍ କରନ୍ତୁ ଏବଂ ଏହାକୁ ଆପଣଙ୍କ ଉତ୍ପାଦ ପ୍ୟାକେଜିଂରେ ସଂଲଗ୍ନ କରନ୍ତୁ",
     "produceQRCode": "ଉତ୍ପାଦ QR କୋଡ୍",
     "downloadQRCode": "QR କୋଡ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
@@ -327,10 +327,13 @@
     "loading": "ସମ୍ପୂର୍ଣ୍ଣ ଯାତ୍ରା ଡାଟା ଲୋଡ୍ ହେଉଛି...",
     "error": "ତ୍ରୁଟି",
     "errorMessage": "ଉତ୍ପାଦ ଡାଟା ଲୋଡ୍ କରିବାରେ ଅସମର୍ଥ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
-    "goBack": "ଫେରିଯାଆନ୍ତୁ"
+    "goBack": "ଫେରିଯାଆନ୍ତୁ",
+    "by": "ଦ୍ୱାରା: {actor}",
+    "location": "ଅବସ୍ଥାନ: {location}",
+    "timestampPrefix": "ରେ"
   },
   "Consumer": {
-    "cconsumerHome": "ଗ୍ରାହକ",
+    "consumerHome": "ଗ୍ରାହକ",
     "title": "ଗ୍ରାହକ ପୋର୍ଟାଲ୍ - ଆପଣଙ୍କ ଖାଦ୍ୟ ଅନୁସରଣ କରନ୍ତୁ",
     "scanQRCode": "QR କୋଡ୍ ସ୍କାନ୍ କରନ୍ତୁ",
     "scanQRCodeDescription": "ଉତ୍ପାଦ ପ୍ୟାକେଜିଂରେ ଥିବା QR କୋଡକୁ ଏହାର ଯାତ୍ରା ଅନୁସରଣ କରିବାକୁ ସ୍କାନ୍ କରନ୍ତୁ",

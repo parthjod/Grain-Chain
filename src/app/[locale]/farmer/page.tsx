@@ -93,7 +93,7 @@ export default function FarmerPage() {
   };
 
   return (
-    <div>
+    <div className="farmer-page-container">
       {/* Floating animated leaves */}
       <div className="bg-decoration">
         <div className="leaf"></div>
