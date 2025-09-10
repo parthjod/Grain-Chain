@@ -103,7 +103,7 @@
 }
 
 .form-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1d349b 0%, #1e3e96 100%);
   color: white;
   padding: 1.5rem;
   border-radius: 15px 15px 0 0;
@@ -114,4 +114,91 @@
 .form-header h2 {
   font-size: 1.75rem;
   margin-bottom: 0
+}
+
+.submit-button {
+    background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Custom styles for form inputs */
+.input,
+.textarea {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: #374151;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.input:hover,
+.textarea:hover {
+  border-color: #a5b4fc;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+
+.selectTrigger {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: #374151;
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s ease-in-out;
+}
+
+.selectTrigger:hover {
+  border-color: #a5b4fc;
+}
+
+.selectTrigger:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+.selectContent {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 8px;
+  z-index: 50;
+  position: relative;
+}
+
+.selectItem {
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.selectItem:hover {
+  background-color: #e0e7ff;
 }

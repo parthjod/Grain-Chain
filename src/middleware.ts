@@ -4,17 +4,16 @@ export default createMiddleware({
   // ✅ All supported locales
   locales: ["en", "hi", "or"],
 
-  // ✅ Fallback when no locale matches
+  // ✅ Default locale when no match is found
   defaultLocale: "en",
+
+  // ✅ Enable automatic locale detection
+  localeDetection: true,
 });
 
 export const config = {
+  // ✅ Match all routes except API, Next.js internals, Vercel internals, or static files
   matcher: [
-    // Match all routes except:
-    // - /api (API routes)
-    // - /_next (Next.js internals)
-    // - /_vercel (Vercel internals)
-    // - Static files (contain a dot, e.g. favicon.ico, robots.txt, images, etc.)
     "/((?!api|_next|_vercel|.*\\..*).*)",
   ],
 };

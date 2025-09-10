@@ -27,6 +27,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check if produce with the same ID already exists
+    const existingProduce = await db.produce.findUnique({
+      where: { produceId },
+    });
+
+    if (existingProduce) {
+      return NextResponse.json(
+        { error: 'Produce with this ID already exists' },
+        { status: 409 }
+      );
+    }
+
     // Generate hash for the produce data
     const dataString = JSON.stringify({
       produceId,

@@ -62,7 +62,9 @@ export default function DistributorPage() {
           title: t('success'),
           description: t('successMessage'),
         });
-        router.push('/distributor/success');
+        router.push(
+          `/distributor/success?produceId=${formData.produceId}&status=${formData.status}&location=${formData.location}&timestamp=${data.produce.updatedAt}` as any
+        );
       } else {
         toast({
           title: t('error'),
@@ -102,8 +104,8 @@ export default function DistributorPage() {
       {/* Main content */}
       {isClient && <main className={styles['main-container']}>
         <div className={styles['page-header']}>
-          <h1 style={{color:"#764BA2"}}>{t('title')}</h1>
-          <p style={{color:"#764BA2"}}>{t('updateStatusDescription')}</p>
+          <h1 style={{color: "#1E3A8A", fontWeight: "bold"}}>{t('title')}</h1>
+          <p style={{fontSize: 'smaller', fontStyle: 'italic', color: '#6B7280'}}>{t('updateStatusDescription')}</p>
         </div>
 
         <div className={styles['form-card']}>
@@ -118,6 +120,7 @@ export default function DistributorPage() {
                 <input
                   type="text"
                   id="produceId"
+                  className={styles.input}
                   value={formData.produceId}
                   onChange={(e) => handleChange('produceId', e.target.value)}
                   placeholder={t('produceIdPlaceholder')}
@@ -130,6 +133,7 @@ export default function DistributorPage() {
                 <input
                   type="text"
                   id="distributorName"
+                  className={styles.input}
                   value={formData.distributorName}
                   onChange={(e) => handleChange('distributorName', e.target.value)}
                   placeholder={t('distributorNamePlaceholder')}
@@ -140,15 +144,15 @@ export default function DistributorPage() {
               <div className={styles['form-group']}>
                 <label htmlFor="status">{t('currentStatus')}</label>
                 <Select onValueChange={(value) => handleChange('status', value)} value={formData.status}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className={`${styles.selectTrigger} w-full`}>
                     <SelectValue placeholder={t('selectCurrentStatus')} />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="In Transit">{t('inTransit')}</SelectItem>
-                    <SelectItem value="At Warehouse">{t('atWarehouse')}</SelectItem>
-                    <SelectItem value="Out for Delivery">{t('outForDelivery')}</SelectItem>
-                    <SelectItem value="Delayed">{t('delayed')}</SelectItem>
-                    <SelectItem value="Customs Clearance">{t('customsClearance')}</SelectItem>
+                  <SelectContent className={styles.selectContent}>
+                    <SelectItem className={styles.selectItem} value="In Transit">{t('inTransit')}</SelectItem>
+                    <SelectItem className={styles.selectItem} value="At Warehouse">{t('atWarehouse')}</SelectItem>
+                    <SelectItem className={styles.selectItem} value="Out for Delivery">{t('outForDelivery')}</SelectItem>
+                    <SelectItem className={styles.selectItem} value="Delayed">{t('delayed')}</SelectItem>
+                    <SelectItem className={styles.selectItem} value="Customs Clearance">{t('customsClearance')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -158,6 +162,7 @@ export default function DistributorPage() {
                 <input
                   type="text"
                   id="walletAddress"
+                  className={styles.input}
                   value={formData.walletAddress}
                   onChange={(e) => handleChange('walletAddress', e.target.value)}
                   placeholder={t('walletAddressPlaceholder')}
@@ -170,6 +175,7 @@ export default function DistributorPage() {
               <label htmlFor="location">{t('currentLocation')}</label>
               <textarea
                 id="location"
+                className={styles.textarea}
                 value={formData.location}
                 onChange={(e) => handleChange('location', e.target.value)}
                 placeholder={t('currentLocationPlaceholder')}
@@ -181,6 +187,7 @@ export default function DistributorPage() {
               <label htmlFor="notes">{t('additionalNotes')}</label>
               <textarea
                 id="notes"
+                className={styles.textarea}
                 value={formData.notes}
                 onChange={(e) => handleChange('notes', e.target.value)}
                 placeholder={t('additionalNotesPlaceholder')}

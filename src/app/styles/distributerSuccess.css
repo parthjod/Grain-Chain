@@ -1,73 +1,88 @@
-/* Global container */
+/* ===== Distributor Success Page Styles ===== */
+
+/* Container */
 .success-container {
   min-height: 100vh;
   background: linear-gradient(to bottom right, #ebf4ff, #e0e7ff);
-  padding: 2rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
   font-family: 'Inter', sans-serif;
 }
 
-/* Header */
+/* Inner wrapper */
+.success-wrapper {
+  max-width: 42rem; /* ~2xl */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header Section */
 .success-header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
 .success-header h1 {
-  font-size: 2.25rem;
+  font-size: 2.25rem; /* text-4xl */
   font-weight: 700;
   color: #1e3a8a; /* blue-800 */
   margin-bottom: 0.5rem;
 }
 
 .success-header p {
-  font-size: 1.125rem;
+  font-size: 1.125rem; /* text-lg */
   color: #2563eb; /* blue-600 */
 }
 
-/* Card styling */
+/* Card Component */
 .success-card {
   background: #fff;
   border-radius: 0.75rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
+/* Card Header */
 .success-card-header {
   background: #2563eb; /* blue-600 */
-  color: white;
+  color: #fff;
   padding: 1.25rem;
 }
 
 .success-card-header h2 {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* text-2xl */
   font-weight: 600;
 }
 
 .success-card-header p {
   font-size: 0.875rem;
-  color: #dbeafe; /* lighter blue */
+  color: #bfdbfe; /* blue-100 */
 }
 
+/* Card Body */
 .success-card-body {
   padding: 1.5rem;
 }
 
-/* Badge styling */
+/* Badge Styles */
 .success-badge {
   display: inline-block;
   background: #e0f2fe; /* blue-100 */
   color: #1e3a8a; /* blue-800 */
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 0.25rem 0.75rem;
+  padding: 0.5rem 1rem;
   border-radius: 9999px;
+  margin-bottom: 1rem;
 }
 
-/* Info grid */
+/* Info Grid */
 .success-info-grid {
   display: grid;
-  gap: 1rem;
   grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -79,6 +94,7 @@
 .success-info-title {
   font-weight: 600;
   color: #374151; /* gray-700 */
+  margin-bottom: 0.25rem;
 }
 
 .success-info-text {
@@ -92,11 +108,12 @@
   margin: 1.5rem 0;
 }
 
-/* Blockchain box */
+/* Blockchain Confirmation */
 .blockchain-box {
   background: #eff6ff; /* blue-50 */
   border-radius: 0.5rem;
   padding: 1rem;
+  margin-top: 1rem;
 }
 
 .blockchain-box h4 {
@@ -113,18 +130,18 @@
 /* Buttons */
 .success-buttons {
   display: flex;
-  gap: 1rem;
   justify-content: center;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .success-buttons .primary-btn {
   background: #2563eb;
   color: white;
-  padding: 0.5rem 1.25rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  transition: background 0.2s;
+  transition: background 0.2s ease;
 }
 
 .success-buttons .primary-btn:hover {
@@ -135,7 +152,7 @@
   border: 1px solid #d1d5db;
   background: white;
   color: #374151;
-  padding: 0.5rem 1.25rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 500;
   transition: background 0.2s, color 0.2s;
@@ -145,7 +162,7 @@
   background: #f9fafb;
 }
 
-/* Next steps card */
+/* Next Steps */
 .next-steps {
   margin-top: 2rem;
   background: #fff;
@@ -155,7 +172,7 @@
 }
 
 .next-steps h3 {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
 }

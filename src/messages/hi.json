@@ -187,7 +187,7 @@
     "title": "पंजीकरण सफल!",
     "produceRegistered": "उपज पंजीकृत",
     "produceRegisteredDescription": "आपकी उपज ब्लॉकचेन पर सफलतापूर्वक पंजीकृत हो गई है",
-    "produceIdLabel": "उपज आईडी: {produceId}",
+    "produceIdLabel": "उपज आईडी:",
     "saveQRCode": "इस क्यूआर कोड को सहेजें और इसे अपनी उपज पैकेजिंग पर संलग्न करें",
     "produceQRCode": "उपज क्यूआर कोड",
     "downloadQRCode": "क्यूआर कोड डाउनलोड करें",
@@ -326,7 +326,10 @@
     "loading": "पूरी यात्रा डेटा लोड हो रहा है...",
     "error": "त्रुटि",
     "errorMessage": "उपज डेटा लोड करने में असमर्थ। कृपया पुन: प्रयास करें।",
-    "goBack": "वापस जाओ"
+    "goBack": "वापस जाओ",
+    "by": "द्वारा: {actor}",
+    "location": "स्थान: {location}",
+    "timestampPrefix": "पर"
   },
   "Consumer": {
     "consumerHome": "उपभोक्ता",

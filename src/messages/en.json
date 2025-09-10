@@ -187,7 +187,7 @@
     "title": "Registration Successful!",
     "produceRegistered": "Produce Registered",
     "produceRegisteredDescription": "Your produce has been successfully registered on the blockchain",
-    "produceIdLabel": "Produce ID: {produceId}",
+    "produceIdLabel": "Produce ID:",
     "saveQRCode": "Save this QR code and attach it to your produce packaging",
     "produceQRCode": "Produce QR code",
     "downloadQRCode": "Download QR Code",
