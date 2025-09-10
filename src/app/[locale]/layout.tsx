@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
-import '@/app/styles/landing.css';
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import "@/app/styles/landing.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Navigation } from "@/components/navigation";
-import { NextIntlClientProvider } from 'next-intl';
-import { unstable_setRequestLocale, getMessages } from 'next-intl/server';
+import { NextIntlClientProvider } from "next-intl";
+import { unstable_setRequestLocale, getMessages } from "next-intl/server";
 import { locales } from "@/i18n";
 import "../globals.css";
 
@@ -14,12 +14,22 @@ const geistMono = GeistMono;
 
 export const metadata: Metadata = {
   title: "GrainChain - Blockchain Supply Chain for Agriculture",
-  description: "Complete transparency from farm to table with blockchain technology. Trace your food journey with GrainChain.",
-  keywords: ["GrainChain", "Blockchain", "Supply Chain", "Agriculture", "Food Traceability", "Ethereum", "Smart Contracts"],
+  description:
+    "Complete transparency from farm to table with blockchain technology. Trace your food journey with GrainChain.",
+  keywords: [
+    "GrainChain",
+    "Blockchain",
+    "Supply Chain",
+    "Agriculture",
+    "Food Traceability",
+    "Ethereum",
+    "Smart Contracts",
+  ],
   authors: [{ name: "GrainChain Team" }],
   openGraph: {
     title: "GrainChain - Blockchain Supply Chain",
-    description: "Complete transparency from farm to table with blockchain technology",
+    description:
+      "Complete transparency from farm to table with blockchain technology",
     url: "https://grainchain.example.com",
     siteName: "GrainChain",
     type: "website",
@@ -27,7 +37,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "GrainChain - Blockchain Supply Chain",
-    description: "Complete transparency from farm to table with blockchain technology",
+    description:
+      "Complete transparency from farm to table with blockchain technology",
   },
 };
 
@@ -35,15 +46,14 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-// ✅ Fix: make params async and await its value before use
 export default async function RootLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>; // mark as Promise
+  params: Promise<{ locale: string }>; // params come as a Promise
 }) {
-  const { locale } = await params; // ✅ Await params
+  const { locale } = await params; // await params before using
 
   unstable_setRequestLocale(locale);
 
@@ -52,7 +62,7 @@ export default async function RootLayout({
     messages = await getMessages();
   } catch (error) {
     console.error(`Failed to load messages for locale ${locale}:`, error);
-    messages = {}; // Fallback to empty messages
+    messages = {}; // fallback to empty messages
   }
 
   return (
