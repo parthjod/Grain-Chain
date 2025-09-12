@@ -4,7 +4,6 @@
   background: linear-gradient(to bottom right, #faf5ff, #fdf2f8);
   padding: 2rem;
   font-family: 'Inter', sans-serif;
-  color: red
 }
 
 
@@ -210,4 +209,6 @@
 
 .retailer-card-body2 {
   margin-left: 650px;
+
 }
+
