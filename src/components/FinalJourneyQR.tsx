@@ -59,7 +59,7 @@ export default function FinalJourneyQR({ produceId, produceData }: FinalJourneyQ
           }))
         };
 
-        const generatedQR = await QRCode.toDataURL(JSON.stringify(journeyData), {
+                const generatedQR = await QRCode.toDataURL(JSON.stringify(journeyData, null, 2), {
           width: 300,
           margin: 2,
           color: {

@@ -30,13 +30,13 @@ export default function LiveQRCode({
 
       setIsGenerating(true);
       try {
-        const data = JSON.stringify({
+                        const data = JSON.stringify({
           produceId,
           farmer,
           produceType,
           origin,
           harvestDate
-        });
+        }, null, 2);
 
         const generatedQR = await QRCode.toDataURL(data, {
           width: 400,
