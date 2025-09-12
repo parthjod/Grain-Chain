@@ -58,7 +58,7 @@ export default function FinalJourneyQR({ produceId, produceData }: FinalJourneyQ
             details: entry.details
           }))
         };
-        
+
         const generatedQR = await QRCode.toDataURL(JSON.stringify(journeyData), {
           width: 300,
           margin: 2,
@@ -67,7 +67,7 @@ export default function FinalJourneyQR({ produceId, produceData }: FinalJourneyQ
             light: '#FFFFFF'
           }
         });
-        
+
         setQrCode(generatedQR);
       } catch (error) {
         console.error('Error generating final QR code:', error);
@@ -86,22 +86,22 @@ export default function FinalJourneyQR({ produceId, produceData }: FinalJourneyQ
           {isGenerating ? 'Generating final journey QR code...' : 'Complete all sections to generate final QR code'}
         </div>
         <div className="w-40 h-40 bg-purple-200 rounded flex items-center justify-center">
-          <span className="text-purple-400 text-xs text-center">Final Journey<br/>QR Code</span>
+          <span className="text-purple-400 text-xs text-center">Final Journey<br />QR Code</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center space-y-6">
+    <div className="qr-card flex flex-col items-center space-y-6">
       <div className="bg-white p-4 rounded-lg shadow-md border-2 border-purple-200">
-        <img 
-          src={qrCode} 
-          alt="Final Journey QR Code" 
+        <img
+          src={qrCode}
+          alt="Final Journey QR Code"
           className="w-40 h-40"
         />
       </div>
-      
+
       <div className="text-center space-y-2">
         <h3 className="text-lg font-bold text-purple-800">🎉 Complete Journey QR Code</h3>
         <p className="text-sm text-purple-600">Contains entire supply chain data</p>

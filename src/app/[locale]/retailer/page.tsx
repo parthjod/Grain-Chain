@@ -136,7 +136,6 @@ export default function RetailerPage() {
                 />
               </div>
             </div>
-
             <div className="form-row">
               <div className="form-group price-input-wrapper">
                 <label htmlFor="price">{t('retailPrice')}</label>

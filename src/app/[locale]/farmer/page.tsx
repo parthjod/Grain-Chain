@@ -105,8 +105,8 @@ export default function FarmerPage() {
       <main className="main-container">
         {/* Header */}
         <div className="page-header">
-          <h1 style={{color:"#4caf50"}}>{t('title')}</h1>
-           <h5 style={{fontSize:"20px", color:"#4caf50"}}>{t('farmerHome')}</h5>
+          <h1 style={{ color: "#4caf50" }}>{t('title')}</h1>
+          <h5 style={{ fontSize: "20px", color: "#4caf50" }}>{t('farmerHome')}</h5>
         </div>
 
         {/* Content wrapper */}

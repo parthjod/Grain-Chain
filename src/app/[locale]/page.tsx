@@ -26,16 +26,17 @@ export default function Home() {
         <div className="container">
           <h2>{t('ecosystemTitle')}</h2>
           <div className="ecosystem-cards">
-<a href="/farmer" style={{ textDecoration: 'none' }}>
-            <div className="ecosystem-card farmer">{t('ecosystemFarmer')}</div>
-</a>
-<a href="/distributor" style={{ textDecoration: 'none' }}>
-            <div className="ecosystem-card distributor">{t('ecosystemDistributor')}</div>
+            <a href="/farmer" style={{ textDecoration: 'none' }}>
+              <div className="ecosystem-card farmer">{t('ecosystemFarmer')}</div>
+            </a>
+            <a href="/distributor" style={{ textDecoration: 'none' }}>
+              <div className="ecosystem-card distributor">{t('ecosystemDistributor')}</div>
             </a>
             <a href="/retailer" style={{ textDecoration: 'none' }}>
-            <div className="ecosystem-card retailer">{t('ecosystemRetailer')}</div></a>
+              <div className="ecosystem-card retailer">{t('ecosystemRetailer')}</div>
+            </a>
             <a href="/consumer" style={{ textDecoration: 'none' }}>
-            <div className="ecosystem-card consumer">{t('ecosystemConsumer')}</div>
+              <div className="ecosystem-card consumer">{t('ecosystemConsumer')}</div>
             </a>
           </div>
         </div>

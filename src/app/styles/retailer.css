@@ -57,17 +57,27 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(25px,-20px) scale(1.1); }
-  66% { transform: translate(-20px,20px) scale(0.9); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(25px, -20px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
 }
 
 /* Navigation */
 .retailer-page-container nav {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(15px);
   border-bottom: 3px solid #0284c7;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 10;
 }
@@ -87,6 +97,7 @@
   font-weight: 700;
   background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -159,6 +170,8 @@
   font-weight: 700;
   background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
   -webkit-background-clip: text;
+  background-clip: text;
+
   -webkit-text-fill-color: transparent;
 }
 
@@ -184,7 +197,7 @@
 .retailer-page-container .form-card {
   background: white;
   border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   animation: slideInLeft 0.8s ease-out;
 }
@@ -247,16 +260,18 @@
   outline: none;
   border-color: #06b6d4;
   background: white;
-  box-shadow: 0 0 0 4px rgba(6,182,212,0.1);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
 }
 
 .retailer-page-container textarea {
   resize: vertical;
   min-height: 90px;
 }
+
 .submit-button {
   margin-top: 20px;
 }
+
 /* Submit Button */
 .retailer-page-container .submit-button {
   background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
@@ -269,7 +284,7 @@
   cursor: pointer;
   width: 100%;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(2,132,199,0.3);
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -281,7 +296,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   transition: left 0.5s ease;
 }
 
@@ -291,14 +306,14 @@
 
 .retailer-page-container .submit-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(2,132,199,0.4);
+  box-shadow: 0 6px 25px rgba(2, 132, 199, 0.4);
 }
 
 /* Preview/Guide Card */
 .retailer-page-container .preview-card {
   background: white;
   border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   padding: 30px;
   position: sticky;
   top: 30px;
@@ -314,18 +329,39 @@
 
 /* Animations */
 @keyframes fadeInDown {
-  from { opacity:0; transform:translateY(-30px); }
-  to { opacity:1; transform:translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideInLeft {
-  from { opacity:0; transform:translateX(-30px); }
-  to { opacity:1; transform:translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInRight {
-  from { opacity:0; transform:translateX(30px); }
-  to { opacity:1; transform:translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Responsive */
@@ -334,6 +370,7 @@
     grid-template-columns: 1fr;
     gap: 30px;
   }
+
   .retailer-page-container .preview-card {
     position: relative;
     top: 0;
@@ -341,11 +378,24 @@
 }
 
 @media (max-width: 768px) {
-  .retailer-page-container .nav-links { display: none; }
-  .retailer-page-container .page-header h1 { font-size: 36px; }
-  .retailer-page-container .form-row { grid-template-columns: 1fr; gap: 20px; }
-  .retailer-page-container .form-body { padding: 20px; }
+  .retailer-page-container .nav-links {
+    display: none;
+  }
+
+  .retailer-page-container .page-header h1 {
+    font-size: 36px;
+  }
+
+  .retailer-page-container .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .retailer-page-container .form-body {
+    padding: 20px;
+  }
 }
+
 .quality-guide {
   background: #ffffff;
   padding: 20px;
@@ -359,7 +409,8 @@
 .quality-guide h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1E3A8A; /* Dark blue */
+  color: #1E3A8A;
+  /* Dark blue */
   margin-bottom: 15px;
   text-align: left;
 }
@@ -376,114 +427,28 @@
 
 .quality-description {
   font-size: 0.9rem;
-  color: #4B5563; /* Gray text */
+  color: #4B5563;
+  /* Gray text */
   margin-left: 8px;
 }
 
 /* Color indicators for each level */
 .excellent {
-  color: #16a34a; /* Green */
+  color: #16a34a;
+  /* Green */
 }
 
 .good {
-  color: #0284c7; /* Blue */
+  color: #0284c7;
+  /* Blue */
 }
 
 .fair {
-  color: #f59e0b; /* Amber */
+  color: #f59e0b;
+  /* Amber */
 }
 
 .poor {
-  color: #dc2626; /* Red */
-}
-/* Toast notification base styles */
-.toast {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  min-width: 300px;
-  max-width: 500px;
-  padding: 16px 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  animation: slideIn 0.3s ease-out;
-}
-
-/* Success toast styling */
-.toast.success {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  color: #374151;
-}
-
-.toast.success .toast-title {
-  font-weight: 600;
-  font-size: 16px;
-  color: #111827;
-  margin: 0 0 4px 0;
-  line-height: 1.4;
-}
-
-.toast.success .toast-description {
-  font-size: 14px;
-  color: #6b7280;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Error toast styling */
-.toast.error {
-  background-color: #dc2626;
-  border: 1px solid #b91c1c;
-  color: #ffffff;
-}
-
-.toast.error .toast-title {
-  font-weight: 600;
-  font-size: 16px;
-  color: #ffffff;
-  margin: 0 0 4px 0;
-  line-height: 1.4;
-}
-
-.toast.error .toast-description {
-  font-size: 14px;
-  color: #fecaca;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Animation for toast appearance */
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Alternative classes for different toast libraries */
-.toast {
-  margin-top: 24px;
-  padding: 14px;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 16px;
-}
-
-.toast.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.toast.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  color: #dc2626;
+  /* Red */
 }

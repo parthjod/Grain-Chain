@@ -11,12 +11,12 @@ interface LiveQRCodeProps {
   harvestDate: string;
 }
 
-export default function LiveQRCode({ 
-  produceId, 
-  farmer, 
-  produceType, 
-  origin, 
-  harvestDate 
+export default function LiveQRCode({
+  produceId,
+  farmer,
+  produceType,
+  origin,
+  harvestDate
 }: LiveQRCodeProps) {
   const [qrCode, setQrCode] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -37,16 +37,16 @@ export default function LiveQRCode({
           origin,
           harvestDate
         });
-        
+
         const generatedQR = await QRCode.toDataURL(data, {
-          width: 200,
-          margin: 1,
+          width: 400,
+          margin: 0,
           color: {
             dark: '#000000',
             light: '#FFFFFF'
           }
         });
-        
+
         setQrCode(generatedQR);
       } catch (error) {
         console.error('Error generating QR code:', error);
@@ -67,7 +67,6 @@ export default function LiveQRCode({
           {isGenerating ? 'Generating...' : 'Fill in all fields to see QR code'}
         </div>
         <div className="w-32 h-32 bg-gray-200 rounded flex items-center justify-center">
-          <span className="text-gray-400 text-xs">QR Code</span>
         </div>
       </div>
     );
@@ -76,10 +75,10 @@ export default function LiveQRCode({
   return (
     <div className="flex flex-col items-center space-y-3">
       <div className="bg-white p-2 rounded-lg shadow-sm border">
-        <img 
-          src={qrCode} 
-          alt="Live QR Code" 
-          className="w-32 h-32"
+        <img
+          src={qrCode}
+          alt="Live QR Code"
+          className="max-w-[180px] max-h-[180px] object-contain"
         />
       </div>
       <div className="text-xs text-gray-600 text-center">

@@ -87,24 +87,23 @@ export default function RetailerSuccessPage() {
     );
   }
 
-    return (
+  return (
     <div className="retailer-success-container">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="retailer-success-header">
-          <h1 style={{marginTop:"50px"}}>GrainChain</h1>
+          <h1 style={{ marginTop: "50px" }}>GrainChain</h1>
           <p>{t('title')}</p>
         </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Final QR Code */}
-          <div className="lg:col-span-1">
-            <div className="retailer-card sticky top-4">
+          <div className="retailer-card lg:col-span-1">
+            <div className="sticky top-4">
               <div className="retailer-card-header">
                 <h2>{t('finalJourneyQRCode')}</h2>
                 <p>{t('finalJourneyQRCodeDescription')}</p>
               </div>
-              <div className="retailer-card-body text-center">
+              <div className="retailer-card-body2 text-center">
                 <FinalJourneyQR
                   produceId={produceData.produceId}
                   produceData={produceData}
@@ -112,7 +111,6 @@ export default function RetailerSuccessPage() {
               </div>
             </div>
           </div>
-
           {/* Right Column - Journey Details */}
           <div className="lg:col-span-2 space-y-6">
             <div className="retailer-card">

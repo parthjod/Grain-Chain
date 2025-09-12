@@ -13,7 +13,8 @@ body {
 .success-container {
     max-width: 600px;
     width: 100%;
-    padding: 40px;
+    padding-top: 100px;
+    padding-bottom: 40px;
     text-align: center;
     animation: fadeIn 1s ease-in-out;
 }
@@ -46,7 +47,7 @@ body {
     font-weight: 700;
     color: #1b5e20;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .success-header p {
@@ -83,6 +84,7 @@ body {
 .confirmation-value {
     color: #424242;
     font-weight: 500;
+    margin-right: 250px;
 }
 
 /* QR Code */
@@ -90,7 +92,7 @@ body {
     background: #fff;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     display: inline-block;
     margin-bottom: 20px;
 }
@@ -141,6 +143,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

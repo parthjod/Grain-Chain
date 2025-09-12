@@ -267,8 +267,8 @@
     "produceIdPlaceholder": "e.g., GRAIN-2024-001",
     "retailerName": "Retailer Name",
     "retailerNamePlaceholder": "Your store name",
-    "retailPrice": "Retail Price ($)",
-    "retailPricePlaceholder": "e.g., 4.99",
+    "retailPrice": "Retail Price (₹)",
+    "retailPricePlaceholder": "e.g., ₹5",
     "qualityAssessment": "Quality Assessment",
     "selectQuality": "Select quality",
     "excellent": "Excellent",
@@ -310,7 +310,7 @@
     "finalJourneyQRCodeDescription": "Complete supply chain data in one scan",
     "produceJourneyComplete": "✅ Produce Journey Complete",
     "produceJourneyCompleteDescription": "The produce has successfully traveled through the entire supply chain",
-    "produceIdLabel": "🆔 {produceId}",
+    "produceIdLabel": "🆔 Produce id: {produceId}",
     "productLabel": "🌾 Product:",
     "quantityLabel": "📏 Quantity:",
     "farmerLabel": "👨‍🌾 Farmer:",
@@ -335,7 +335,8 @@
     "errorMessage": "Unable to load produce data. Please try again.",
     "goBack": "Go Back",
     "by": "By: {actor}",
-    "location": "Location: {location}"
+    "location": "Location: {location}",
+    "timestampPrefix": "Timestamp: "
   },
   "Consumer": {
     "consumerHome": "Consumer",

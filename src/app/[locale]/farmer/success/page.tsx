@@ -14,7 +14,7 @@ export default function FarmerSuccessPage() {
   useEffect(() => {
     const storedQR = localStorage.getItem('lastQRCode');
     const storedId = localStorage.getItem('lastProduceId');
-    
+
     if (storedQR) setQrCode(storedQR);
     if (storedId) setProduceId(storedId);
   }, []);
@@ -27,7 +27,6 @@ export default function FarmerSuccessPage() {
       link.click();
     }
   };
-
   return (
     <div className="success-container">
       <div className="success-card">
@@ -47,9 +46,9 @@ export default function FarmerSuccessPage() {
         {qrCode && (
           <div>
             <div className="qr-wrapper">
-              <img 
-                src={qrCode} 
-                alt={t('produceQRCode')} 
+              <img
+                src={qrCode}
+                alt={t('produceQRCode')}
                 className="qr-image"
               />
             </div>
@@ -58,8 +57,8 @@ export default function FarmerSuccessPage() {
               <button onClick={handleDownload} className="back-button">
                 {t('downloadQRCode')}
               </button>
-              <button 
-                onClick={() => router.push('/farmer')} 
+              <button
+                onClick={() => router.push('/farmer')}
                 className="back-button"
               >
                 {t('registerAnother')}

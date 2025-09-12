@@ -4,7 +4,7 @@
   background: linear-gradient(to bottom right, #faf5ff, #fdf2f8);
   padding: 2rem;
   font-family: 'Inter', sans-serif;
-  color:red
+  color: red
 }
 
 
@@ -18,13 +18,15 @@
 .retailer-success-header h1 {
   font-size: 2.25rem;
   font-weight: 700;
-  color: #6b21a8; /* purple-800 */
+  color: #6b21a8;
+  /* purple-800 */
   margin-bottom: 0.5rem;
 }
 
 .retailer-success-header p {
   font-size: 1.125rem;
-  color: #9333ea; /* purple-600 */
+  color: #9333ea;
+  /* purple-600 */
 }
 
 /* Card base */
@@ -49,7 +51,8 @@
 
 .retailer-card-header p {
   font-size: 0.875rem;
-  color: #f3e8ff; /* lighter purple */
+  color: #f3e8ff;
+  /* lighter purple */
 }
 
 /* Card content */
@@ -60,8 +63,10 @@
 /* Badge */
 .retailer-badge {
   display: inline-block;
-  background: #ede9fe; /* purple-100 */
-  color: #6b21a8; /* purple-800 */
+  background: #ede9fe;
+  /* purple-100 */
+  color: #6b21a8;
+  /* purple-800 */
   font-weight: 600;
   font-size: 0.875rem;
   padding: 0.25rem 0.75rem;
@@ -201,4 +206,8 @@
 
 .retailer-buttons .outline-btn:hover {
   background: #f9fafb;
+}
+
+.retailer-card-body2 {
+  margin-left: 650px;
 }
