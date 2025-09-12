@@ -98,7 +98,7 @@ export default function RetailerSuccessPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Final QR Code */}
           <div className="retailer-card lg:col-span-1">
-            <div className="sticky top-4">
+            <div className="sticky top-4!">
               <div className="retailer-card-header">
                 <h2>{t('finalJourneyQRCode')}</h2>
                 <p>{t('finalJourneyQRCodeDescription')}</p>
