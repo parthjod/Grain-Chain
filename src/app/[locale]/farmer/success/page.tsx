@@ -14,7 +14,6 @@ export default function FarmerSuccessPage() {
   useEffect(() => {
     const storedQR = localStorage.getItem('lastQRCode');
     const storedId = localStorage.getItem('lastProduceId');
-
     if (storedQR) setQrCode(storedQR);
     if (storedId) setProduceId(storedId);
   }, []);
