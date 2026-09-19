@@ -42,9 +42,12 @@ Installation & Setup
 
 3.  Set up environment variables:
 
-    - Copy the example .env file: bash cp .env.example .env
+     Create a `.env` file in the project root and add the required environment variables.
 
-    - Fill in the required values in your new .env file (API keys, private key, etc.).
+   For the local SQLite database, add:
+
+   ```env
+   DATABASE_URL="file:./dev.db"
 
 4.  Initialize the database: bash npm run db:push
 
