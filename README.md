@@ -97,3 +97,7 @@ Distributed under the MIT License.
 Encounter a bug or have a question? Open an issue on GitHub.
 
 Built with ❤️ for a more transparent and sustainable future.
+
+## Contributors
+
+- Snehx-gif
